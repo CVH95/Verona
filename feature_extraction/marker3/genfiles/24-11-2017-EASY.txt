@@ -1,0 +1,879 @@
+		---------------------------------------------
+		    OBJECT RECOGNITION FOR IMAGE TRACKING
+		---------------------------------------------
+
+
+
+---------------------------------------------------------------------
+
+DETECTION BASED ON KEYPOINT DETECTION AND MATCHING
+
+---------------------------------------------------------------------
+
+
+	>> Image #1 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #1:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.454337
+	>> Minimum distance: 0
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 288
+
+	>> Runtime: 1.791 [secs]
+
+init done
+
+  FRAME #1 EVALUATION
+
+(1 out of 30 | 3.33333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 288
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #2 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #2:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.495425
+	>> Minimum distance: 0.0115677
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 12
+
+	>> Runtime: 1.593 [secs]
+
+
+  FRAME #2 EVALUATION
+
+(2 out of 30 | 6.66667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 12
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #3 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #3:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.446685
+	>> Minimum distance: 0.0168484
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 5
+
+	>> Runtime: 1.763 [secs]
+
+
+  FRAME #3 EVALUATION
+
+(3 out of 30 | 10%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 5
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #4 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #4:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.505309
+	>> Minimum distance: 0.0262967
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 13
+
+	>> Runtime: 2.351 [secs]
+
+
+  FRAME #4 EVALUATION
+
+(4 out of 30 | 13.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 13
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #5 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #5:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.500519
+	>> Minimum distance: 0.0433104
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 39
+
+	>> Runtime: 1.743 [secs]
+
+
+  FRAME #5 EVALUATION
+
+(5 out of 30 | 16.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 39
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #6 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #6:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.505711
+	>> Minimum distance: 0.0235882
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 7
+
+	>> Runtime: 1.862 [secs]
+
+
+  FRAME #6 EVALUATION
+
+(6 out of 30 | 20%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 7
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #7 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #7:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.449379
+	>> Minimum distance: 0.0164598
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 50
+
+	>> Runtime: 1.619 [secs]
+
+
+  FRAME #7 EVALUATION
+
+(7 out of 30 | 23.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 50
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #8 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #8:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.430545
+	>> Minimum distance: 0.0236558
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 71
+
+	>> Runtime: 1.972 [secs]
+
+
+  FRAME #8 EVALUATION
+
+(8 out of 30 | 26.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 71
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #9 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #9:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.446129
+	>> Minimum distance: 0.0265989
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 46
+
+	>> Runtime: 2.436 [secs]
+
+
+  FRAME #9 EVALUATION
+
+(9 out of 30 | 30%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 46
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #10 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #10:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.44169
+	>> Minimum distance: 0.0285136
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 41
+
+	>> Runtime: 1.939 [secs]
+
+
+  FRAME #10 EVALUATION
+
+(10 out of 30 | 33.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 41
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #11 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #11:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.429646
+	>> Minimum distance: 0.0184248
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 4
+
+	>> Runtime: 1.946 [secs]
+
+
+  FRAME #11 EVALUATION
+
+(11 out of 30 | 36.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 4
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #12 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #12:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.442219
+	>> Minimum distance: 0.0218043
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 47
+
+	>> Runtime: 1.777 [secs]
+
+
+  FRAME #12 EVALUATION
+
+(12 out of 30 | 40%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 47
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #13 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #13:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.45956
+	>> Minimum distance: 0.0194771
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 13
+
+	>> Runtime: 2.109 [secs]
+
+
+  FRAME #13 EVALUATION
+
+(13 out of 30 | 43.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 13
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #14 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #14:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.46014
+	>> Minimum distance: 0.0282249
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 47
+
+	>> Runtime: 2.121 [secs]
+
+
+  FRAME #14 EVALUATION
+
+(14 out of 30 | 46.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 47
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #15 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #15:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.528225
+	>> Minimum distance: 0.0340352
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 59
+
+	>> Runtime: 1.829 [secs]
+
+
+  FRAME #15 EVALUATION
+
+(15 out of 30 | 50%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 59
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #16 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #16:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.525707
+	>> Minimum distance: 0.0361024
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 42
+
+	>> Runtime: 2.424 [secs]
+
+
+  FRAME #16 EVALUATION
+
+(16 out of 30 | 53.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 42
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #17 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #17:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.519194
+	>> Minimum distance: 0.019367
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 12
+
+	>> Runtime: 1.599 [secs]
+
+
+  FRAME #17 EVALUATION
+
+(17 out of 30 | 56.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 12
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #18 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #18:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.463835
+	>> Minimum distance: 0.0283435
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 23
+
+	>> Runtime: 1.772 [secs]
+
+
+  FRAME #18 EVALUATION
+
+(18 out of 30 | 60%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 23
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #19 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #19:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.496778
+	>> Minimum distance: 0.0336243
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 19
+
+	>> Runtime: 1.598 [secs]
+
+
+  FRAME #19 EVALUATION
+
+(19 out of 30 | 63.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 19
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #20 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #20:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.445434
+	>> Minimum distance: 0.0301014
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 8
+
+	>> Runtime: 1.972 [secs]
+
+
+  FRAME #20 EVALUATION
+
+(20 out of 30 | 66.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 8
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #21 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #21:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.508513
+	>> Minimum distance: 0.0310213
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 9
+
+	>> Runtime: 2.154 [secs]
+
+
+  FRAME #21 EVALUATION
+
+(21 out of 30 | 70%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 9
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #22 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #22:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.503497
+	>> Minimum distance: 0.0239355
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 18
+
+	>> Runtime: 1.362 [secs]
+
+
+  FRAME #22 EVALUATION
+
+(22 out of 30 | 73.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 18
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #23 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #23:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.510881
+	>> Minimum distance: 0.0336913
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 16
+
+	>> Runtime: 1.574 [secs]
+
+
+  FRAME #23 EVALUATION
+
+(23 out of 30 | 76.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 16
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #24 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #24:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.471994
+	>> Minimum distance: 0.0503975
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 26
+
+	>> Runtime: 1.916 [secs]
+
+
+  FRAME #24 EVALUATION
+
+(24 out of 30 | 80%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 26
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #25 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #25:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.555875
+	>> Minimum distance: 0.0475101
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 44
+
+	>> Runtime: 1.815 [secs]
+
+
+  FRAME #25 EVALUATION
+
+(25 out of 30 | 83.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 44
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #26 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #26:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.544064
+	>> Minimum distance: 0.0199162
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 11
+
+	>> Runtime: 1.645 [secs]
+
+
+  FRAME #26 EVALUATION
+
+(26 out of 30 | 86.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 11
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #27 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #27:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.452438
+	>> Minimum distance: 0.008754
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 9
+
+	>> Runtime: 1.877 [secs]
+
+
+  FRAME #27 EVALUATION
+
+(27 out of 30 | 90%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 9
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #28 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #28:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.435324
+	>> Minimum distance: 0.0160609
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 6
+
+	>> Runtime: 2.481 [secs]
+
+
+  FRAME #28 EVALUATION
+
+(28 out of 30 | 93.3333%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 6
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #29 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #29:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.519877
+	>> Minimum distance: 0.0286069
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 19
+
+	>> Runtime: 1.873 [secs]
+
+
+  FRAME #29 EVALUATION
+
+(29 out of 30 | 96.6667%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 19
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+	>> Image #30 loaded correctly.
+
+KEYPOINT DETECTION AT FRAME #30:
+
+  MAXIMUM AND MINIMUM DISTANCES BETWEEN KEYPOINTS
+
+	>> Maximum distance: 0.539042
+	>> Minimum distance: 0.0406695
+
+	>> Number of DETECTED candidate points: 423
+	>> Number of ACTUAL keypoints (good matches): 34
+
+	>> Runtime: 2.312 [secs]
+
+
+  FRAME #30 EVALUATION
+
+(30 out of 30 | 100%)
+
+
+	>> MINIMUM # OF POINTS REQUIRED to identify the marker: p_min = 3  
+	>> NUMBER OF POINTS FOUND: p_found = 34
+	>> MARKER FOUND (1 or 0): 1
+	>> FALSE marker points DETECTED in this frame: FP = 0
+
+---------------------------------------------------------------------
+
+
+  OVERALL STATISTICS
+
+(Tested over the entire sequence: /home/student/workspace/RoVi1-Final-Project/sequences/marker_corny/*.png)
+
+MARKER RECOGNITION STATISTICS
+
+	>> Total number of marker frames: 30
+	>> Markers recognised: 30
+	>> Percentage of markers recognised: 100%
+	>> Markers NOT recognised: 0
+	>> Percentage of fails: 0%
+	>> Average number of points per marker: 34.6
+	>> False positives per image (FPPI): 0
+
+  RUNTIME:
+
+	>> Average runtime: 1.9075 [secs]
+
+---------------------------------------------------------------------
+
+Program executed succesfully
+
+		---------------------------------------------
+		 Carlos Viescas Huerta | SDU Robotics | RoVi1
+		---------------------------------------------
