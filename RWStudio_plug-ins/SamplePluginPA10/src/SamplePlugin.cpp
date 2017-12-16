@@ -57,20 +57,23 @@ double f = 823;
 int u0, v0; // Initial image coordinates of the marker (the ones that we aim to keep constant).
 
 // Tolerance level (epsilon) for Inverse Kinematics
-float eps = 1e-2;
+float eps = 1e-4;
 
 // Marker motion files
 string file_slow = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/motions/MarkerMotionSlow.txt"; //MarkerMotionSlow
 string file_medium = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/motions/MarkerMotionMedium.txt";
 string file_fast = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/motions/MarkerMotionFast.txt";
 
-// Ofstream files containing different variables
-ofstream t3d, q7, tcpf;
 
 // Output files
-string test1_slow = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow.txt";
-string test1_med = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_med.txt";
-string test1_fast = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_fast.txt";
+string q1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_joints.csv";
+string tp1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_toolPose_P.csv";
+string tr1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_toolPose_R.csv";
+string e1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_2dError.csv";
+string q3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_joints.csv";
+string tp3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_P.csv";
+string tr3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_R.csv";
+string e3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_2dError.csv";
 
 
 //=========================================================================================================================================================================================================
@@ -330,12 +333,17 @@ void SamplePlugin::btnPressed() {
 		// activate mode 1.
 		mode1 = true;
 		mode2 = false;
+		
+		// CSV save files
+		qStore.open(q1_csv);
+		tpStore.open(tp1_csv);
+		trStore.open(tr1_csv);		
 
 		// INITIAL CONFIGURATION
 	
 		// If bt1 is pressed for the first time after uploading/restarting the plugin:		
 		if( bt1 == 0 )
-		{
+		{	
 			// Set marker to initial position
 			MovableFrame* marker = (MovableFrame*) _wc->findFrame("Marker");
 			Frame* camera = _wc->findFrame("Camera");
@@ -408,6 +416,9 @@ void SamplePlugin::btnPressed() {
 	{
 		mode1 = false;
 		mode2 = true;
+		qStore.open(q3_csv);
+		tpStore.open(tp3_csv);
+		trStore.open(tr3_csv);	
 		
 		// INITIAL CONFIGURATION
 	
@@ -612,6 +623,57 @@ float SamplePlugin::du_dvEuclidean( rw::math::Vector2D<double> target, rw::math:
 	return distance;
 
 } // du_dvEuclidean
+
+//--------------------------------------------------------------------------------------------------------
+
+// Store joint configuration vector into file
+void SamplePlugin::store_jointVector( rw::math::Q q )
+{
+	double a, b, c, d, e, f, g;
+	a = q(0);
+	b = q(1);
+	c = q(2);
+	d = q(3);
+	e = q(4);
+	f = q(5);
+	g = q(6);
+	
+	qStore << counter << "," << a << "," << b << "," << c << "," << d << "," << e << "," << f << "," << g;	
+	// Start new line
+	qStore << "\n";
+
+} // store_jointVector
+
+//---------------------------------------------------------------------------------------------------------
+
+// Store tool pose into file
+void SamplePlugin::store_toolPose( rw::math::Transform3D<double> T )
+{
+	// Get position and rotation
+	rw::math::Vector3D<double> toolP = T.P();
+	double a, b, c;
+	rw::math::RPY<double> toolRPY = rw::math::RPY<double>(T.R(), eps);
+	double d, e, f;
+	a = toolP(0);
+	b = toolP(1);
+	c = toolP(2);
+	d = toolRPY(0);
+	e = toolRPY(1);
+	f = toolRPY(2);
+
+	// Store tool position
+	tpStore << counter << "," << a << "," << b << "," << c;	
+
+	// Start new line
+	tpStore << "\n";
+	
+	// Store tool rpy
+	trStore << counter << "," << d << "," << e << "," << f;		
+	
+	// Start new line
+	trStore << "\n";
+
+} // store_toolPose
 
 //===========================================================================================================================================================================================================
 
@@ -1008,6 +1070,7 @@ void SamplePlugin::timer()
 
 			// Display info
 			rw::math::Q q_current = dev->getQ(_state);
+			store_jointVector(q_current);
 			log().info() << "	>> Joint displacement dq:   " << q_current - q_prev << "\n";
 			log().info() << "\n";
 			log().info() << "	>> PREVIOUS joint vector Q:   " << q_prev << "\n";
@@ -1016,13 +1079,16 @@ void SamplePlugin::timer()
 			log().info() << "	>> Inverse Kinematics solved in:   " << tempoIK << "\n";
 			log().info() << "\n";
 
-			rw::math::Transform3D<double> TCP = dev->baseTframe(camera, _state);		
+			rw::math::Transform3D<double> TCP = dev->baseTframe(camera, _state);	
+			store_toolPose(TCP);	
 			log().info() << "	>> Updated tool pose:   " << TCP << "\n";
 			log().info() << "	>> Visual servoing operating time:   " << tempoEND << "\n";
 			log().info() << "	>> Time consumed ------------------>  " << (tempoEND / tempo)*100 << "%" << "\n";
 		
 		} // if mode1
 		
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 		else if (mode2 == true && mode1 == false) // tracking 3 points
 		{  
 			// Get new image points 
@@ -1161,6 +1227,7 @@ void SamplePlugin::timer()
 
 			// Display info
 			rw::math::Q q_current3 = dev->getQ(_state);
+			store_jointVector(q_current3);
 			log().info() << "	>> Joint displacement dq:   " << dq3 << "\n";
 			log().info() << "\n";
 			log().info() << "	>> PREVIOUS joint vector Q:   " << q_prev << "\n";
@@ -1169,7 +1236,8 @@ void SamplePlugin::timer()
 			log().info() << "	>> Inverse Kinematics solved in:   " << tempoIK3 << "\n";
 			log().info() << "\n";
 
-			rw::math::Transform3D<double> TCP3 = dev->baseTframe(cameraFrame, _state);		
+			rw::math::Transform3D<double> TCP3 = dev->baseTframe(cameraFrame, _state);	
+			store_toolPose(TCP3);	
 			log().info() << "	>> Updated tool pose:   " << TCP3 << "\n";
 			log().info() << "	>> Visual servoing operating time:   " << tempoEND3 << "\n";
 			log().info() << "	>> Time consumed ------------------>  " << (tempoEND3 / tempo)*100 << "%" << "\n";
@@ -1195,6 +1263,10 @@ void SamplePlugin::timer()
 	// Finish .txt file
 	if (counter == total_movs)
 	{
+		qStore.close();
+		tpStore.close();
+		trStore.close();
+	
 		_timer->stop();
 		chrono.resetAndPause(); // crhono to calculate dt
 		log().info() << "\n";

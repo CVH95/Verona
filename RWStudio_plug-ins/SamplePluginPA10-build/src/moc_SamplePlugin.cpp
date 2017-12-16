@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_SamplePlugin_t {
-    QByteArrayData data[53];
-    char stringdata0[624];
+    QByteArrayData data[57];
+    char stringdata0[661];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -54,35 +54,39 @@ QT_MOC_LITERAL(20, 286, 14), // "du_dvEuclidean"
 QT_MOC_LITERAL(21, 301, 26), // "rw::math::Vector2D<double>"
 QT_MOC_LITERAL(22, 328, 6), // "target"
 QT_MOC_LITERAL(23, 335, 7), // "current"
-QT_MOC_LITERAL(24, 343, 19), // "checkVelocityLimits"
-QT_MOC_LITERAL(25, 363, 1), // "Q"
-QT_MOC_LITERAL(26, 365, 2), // "dq"
-QT_MOC_LITERAL(27, 368, 5), // "limit"
-QT_MOC_LITERAL(28, 374, 7), // "delta_t"
-QT_MOC_LITERAL(29, 382, 14), // "image_Jacobian"
-QT_MOC_LITERAL(30, 397, 18), // "rw::math::Jacobian"
-QT_MOC_LITERAL(31, 416, 1), // "z"
-QT_MOC_LITERAL(32, 418, 1), // "f"
-QT_MOC_LITERAL(33, 420, 8), // "imgPoint"
-QT_MOC_LITERAL(34, 429, 9), // "stackJacs"
-QT_MOC_LITERAL(35, 439, 35), // "vector<rw::math::Vector2D<dou..."
-QT_MOC_LITERAL(36, 475, 2), // "uv"
-QT_MOC_LITERAL(37, 478, 8), // "duToBase"
-QT_MOC_LITERAL(38, 487, 3), // "T_0"
-QT_MOC_LITERAL(39, 491, 17), // "compute_Z_image_q"
-QT_MOC_LITERAL(40, 509, 15), // "Eigen::MatrixXd"
-QT_MOC_LITERAL(41, 525, 6), // "Jimage"
-QT_MOC_LITERAL(42, 532, 3), // "S_q"
-QT_MOC_LITERAL(43, 536, 3), // "J_q"
-QT_MOC_LITERAL(44, 540, 8), // "solve_dq"
-QT_MOC_LITERAL(45, 549, 9), // "reference"
-QT_MOC_LITERAL(46, 559, 6), // "Zimage"
-QT_MOC_LITERAL(47, 566, 13), // "track_1_point"
-QT_MOC_LITERAL(48, 580, 6), // "Frame*"
-QT_MOC_LITERAL(49, 587, 6), // "camera"
-QT_MOC_LITERAL(50, 594, 14), // "track_3_points"
-QT_MOC_LITERAL(51, 609, 8), // "duvStack"
-QT_MOC_LITERAL(52, 618, 5) // "du_dv"
+QT_MOC_LITERAL(24, 343, 17), // "store_jointVector"
+QT_MOC_LITERAL(25, 361, 1), // "q"
+QT_MOC_LITERAL(26, 363, 14), // "store_toolPose"
+QT_MOC_LITERAL(27, 378, 1), // "T"
+QT_MOC_LITERAL(28, 380, 19), // "checkVelocityLimits"
+QT_MOC_LITERAL(29, 400, 1), // "Q"
+QT_MOC_LITERAL(30, 402, 2), // "dq"
+QT_MOC_LITERAL(31, 405, 5), // "limit"
+QT_MOC_LITERAL(32, 411, 7), // "delta_t"
+QT_MOC_LITERAL(33, 419, 14), // "image_Jacobian"
+QT_MOC_LITERAL(34, 434, 18), // "rw::math::Jacobian"
+QT_MOC_LITERAL(35, 453, 1), // "z"
+QT_MOC_LITERAL(36, 455, 1), // "f"
+QT_MOC_LITERAL(37, 457, 8), // "imgPoint"
+QT_MOC_LITERAL(38, 466, 9), // "stackJacs"
+QT_MOC_LITERAL(39, 476, 35), // "vector<rw::math::Vector2D<dou..."
+QT_MOC_LITERAL(40, 512, 2), // "uv"
+QT_MOC_LITERAL(41, 515, 8), // "duToBase"
+QT_MOC_LITERAL(42, 524, 3), // "T_0"
+QT_MOC_LITERAL(43, 528, 17), // "compute_Z_image_q"
+QT_MOC_LITERAL(44, 546, 15), // "Eigen::MatrixXd"
+QT_MOC_LITERAL(45, 562, 6), // "Jimage"
+QT_MOC_LITERAL(46, 569, 3), // "S_q"
+QT_MOC_LITERAL(47, 573, 3), // "J_q"
+QT_MOC_LITERAL(48, 577, 8), // "solve_dq"
+QT_MOC_LITERAL(49, 586, 9), // "reference"
+QT_MOC_LITERAL(50, 596, 6), // "Zimage"
+QT_MOC_LITERAL(51, 603, 13), // "track_1_point"
+QT_MOC_LITERAL(52, 617, 6), // "Frame*"
+QT_MOC_LITERAL(53, 624, 6), // "camera"
+QT_MOC_LITERAL(54, 631, 14), // "track_3_points"
+QT_MOC_LITERAL(55, 646, 8), // "duvStack"
+QT_MOC_LITERAL(56, 655, 5) // "du_dv"
 
     },
     "SamplePlugin\0btnPressed\0\0timer\0"
@@ -95,7 +99,8 @@ QT_MOC_LITERAL(52, 618, 5) // "du_dv"
     "rw::math::Transform3D<double>\0"
     "T_marker_default\0du_dvEuclidean\0"
     "rw::math::Vector2D<double>\0target\0"
-    "current\0checkVelocityLimits\0Q\0dq\0limit\0"
+    "current\0store_jointVector\0q\0store_toolPose\0"
+    "T\0checkVelocityLimits\0Q\0dq\0limit\0"
     "delta_t\0image_Jacobian\0rw::math::Jacobian\0"
     "z\0f\0imgPoint\0stackJacs\0"
     "vector<rw::math::Vector2D<double> >\0"
@@ -112,7 +117,7 @@ static const uint qt_meta_data_SamplePlugin[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -120,21 +125,23 @@ static const uint qt_meta_data_SamplePlugin[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   89,    2, 0x08 /* Private */,
-       3,    0,   90,    2, 0x08 /* Private */,
-       4,    1,   91,    2, 0x08 /* Private */,
-       7,    1,   94,    2, 0x08 /* Private */,
-      11,    4,   97,    2, 0x08 /* Private */,
-      20,    2,  106,    2, 0x08 /* Private */,
-      24,    3,  111,    2, 0x08 /* Private */,
-      29,    3,  118,    2, 0x08 /* Private */,
-      34,    3,  125,    2, 0x08 /* Private */,
-      37,    1,  132,    2, 0x08 /* Private */,
-      39,    3,  135,    2, 0x08 /* Private */,
-      44,    3,  142,    2, 0x08 /* Private */,
-      47,    3,  149,    2, 0x08 /* Private */,
-      50,    3,  156,    2, 0x08 /* Private */,
-      51,    1,  163,    2, 0x08 /* Private */,
+       1,    0,   99,    2, 0x08 /* Private */,
+       3,    0,  100,    2, 0x08 /* Private */,
+       4,    1,  101,    2, 0x08 /* Private */,
+       7,    1,  104,    2, 0x08 /* Private */,
+      11,    4,  107,    2, 0x08 /* Private */,
+      20,    2,  116,    2, 0x08 /* Private */,
+      24,    1,  121,    2, 0x08 /* Private */,
+      26,    1,  124,    2, 0x08 /* Private */,
+      28,    3,  127,    2, 0x08 /* Private */,
+      33,    3,  134,    2, 0x08 /* Private */,
+      38,    3,  141,    2, 0x08 /* Private */,
+      41,    1,  148,    2, 0x08 /* Private */,
+      43,    3,  151,    2, 0x08 /* Private */,
+      48,    3,  158,    2, 0x08 /* Private */,
+      51,    3,  165,    2, 0x08 /* Private */,
+      54,    3,  172,    2, 0x08 /* Private */,
+      55,    1,  179,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -143,15 +150,17 @@ static const uint qt_meta_data_SamplePlugin[] = {
     0x80000000 | 8, 0x80000000 | 9,   10,
     QMetaType::Void, 0x80000000 | 12, 0x80000000 | 14, 0x80000000 | 16, 0x80000000 | 18,   13,   15,   17,   19,
     QMetaType::Float, 0x80000000 | 21, 0x80000000 | 21,   22,   23,
-    0x80000000 | 16, 0x80000000 | 25, 0x80000000 | 25, QMetaType::Double,   26,   27,   28,
-    0x80000000 | 30, QMetaType::Double, QMetaType::Double, 0x80000000 | 21,   31,   32,   33,
-    0x80000000 | 30, QMetaType::Double, QMetaType::Double, 0x80000000 | 35,   31,   32,   36,
-    0x80000000 | 30, 0x80000000 | 18,   38,
-    0x80000000 | 40, 0x80000000 | 30, 0x80000000 | 30, 0x80000000 | 30,   41,   42,   43,
-    0x80000000 | 16, 0x80000000 | 21, 0x80000000 | 21, 0x80000000 | 40,   36,   45,   46,
-    0x80000000 | 21, QMetaType::Double, 0x80000000 | 48, 0x80000000 | 48,   32,   15,   49,
-    0x80000000 | 35, QMetaType::Double, 0x80000000 | 48, 0x80000000 | 48,   32,   15,   49,
-    0x80000000 | 30, 0x80000000 | 35,   52,
+    QMetaType::Void, 0x80000000 | 16,   25,
+    QMetaType::Void, 0x80000000 | 18,   27,
+    0x80000000 | 16, 0x80000000 | 29, 0x80000000 | 29, QMetaType::Double,   30,   31,   32,
+    0x80000000 | 34, QMetaType::Double, QMetaType::Double, 0x80000000 | 21,   35,   36,   37,
+    0x80000000 | 34, QMetaType::Double, QMetaType::Double, 0x80000000 | 39,   35,   36,   40,
+    0x80000000 | 34, 0x80000000 | 18,   42,
+    0x80000000 | 44, 0x80000000 | 34, 0x80000000 | 34, 0x80000000 | 34,   45,   46,   47,
+    0x80000000 | 16, 0x80000000 | 21, 0x80000000 | 21, 0x80000000 | 44,   40,   49,   50,
+    0x80000000 | 21, QMetaType::Double, 0x80000000 | 52, 0x80000000 | 52,   36,   15,   53,
+    0x80000000 | 39, QMetaType::Double, 0x80000000 | 52, 0x80000000 | 52,   36,   15,   53,
+    0x80000000 | 34, 0x80000000 | 39,   56,
 
        0        // eod
 };
@@ -170,23 +179,25 @@ void SamplePlugin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 4: _t->default_restart((*reinterpret_cast< Device::Ptr(*)>(_a[1])),(*reinterpret_cast< rw::kinematics::MovableFrame*(*)>(_a[2])),(*reinterpret_cast< rw::math::Q(*)>(_a[3])),(*reinterpret_cast< rw::math::Transform3D<double>(*)>(_a[4]))); break;
         case 5: { float _r = _t->du_dvEuclidean((*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[1])),(*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< float*>(_a[0]) = _r; }  break;
-        case 6: { rw::math::Q _r = _t->checkVelocityLimits((*reinterpret_cast< Q(*)>(_a[1])),(*reinterpret_cast< Q(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])));
+        case 6: _t->store_jointVector((*reinterpret_cast< rw::math::Q(*)>(_a[1]))); break;
+        case 7: _t->store_toolPose((*reinterpret_cast< rw::math::Transform3D<double>(*)>(_a[1]))); break;
+        case 8: { rw::math::Q _r = _t->checkVelocityLimits((*reinterpret_cast< Q(*)>(_a[1])),(*reinterpret_cast< Q(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< rw::math::Q*>(_a[0]) = _r; }  break;
-        case 7: { rw::math::Jacobian _r = _t->image_Jacobian((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[3])));
+        case 9: { rw::math::Jacobian _r = _t->image_Jacobian((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< rw::math::Jacobian*>(_a[0]) = _r; }  break;
-        case 8: { rw::math::Jacobian _r = _t->stackJacs((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< vector<rw::math::Vector2D<double> >(*)>(_a[3])));
+        case 10: { rw::math::Jacobian _r = _t->stackJacs((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< vector<rw::math::Vector2D<double> >(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< rw::math::Jacobian*>(_a[0]) = _r; }  break;
-        case 9: { rw::math::Jacobian _r = _t->duToBase((*reinterpret_cast< rw::math::Transform3D<double>(*)>(_a[1])));
+        case 11: { rw::math::Jacobian _r = _t->duToBase((*reinterpret_cast< rw::math::Transform3D<double>(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< rw::math::Jacobian*>(_a[0]) = _r; }  break;
-        case 10: { Eigen::MatrixXd _r = _t->compute_Z_image_q((*reinterpret_cast< rw::math::Jacobian(*)>(_a[1])),(*reinterpret_cast< rw::math::Jacobian(*)>(_a[2])),(*reinterpret_cast< rw::math::Jacobian(*)>(_a[3])));
+        case 12: { Eigen::MatrixXd _r = _t->compute_Z_image_q((*reinterpret_cast< rw::math::Jacobian(*)>(_a[1])),(*reinterpret_cast< rw::math::Jacobian(*)>(_a[2])),(*reinterpret_cast< rw::math::Jacobian(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< Eigen::MatrixXd*>(_a[0]) = _r; }  break;
-        case 11: { rw::math::Q _r = _t->solve_dq((*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[1])),(*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[2])),(*reinterpret_cast< Eigen::MatrixXd(*)>(_a[3])));
+        case 13: { rw::math::Q _r = _t->solve_dq((*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[1])),(*reinterpret_cast< rw::math::Vector2D<double>(*)>(_a[2])),(*reinterpret_cast< Eigen::MatrixXd(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< rw::math::Q*>(_a[0]) = _r; }  break;
-        case 12: { rw::math::Vector2D<double> _r = _t->track_1_point((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< Frame*(*)>(_a[2])),(*reinterpret_cast< Frame*(*)>(_a[3])));
+        case 14: { rw::math::Vector2D<double> _r = _t->track_1_point((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< Frame*(*)>(_a[2])),(*reinterpret_cast< Frame*(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< rw::math::Vector2D<double>*>(_a[0]) = _r; }  break;
-        case 13: { vector<rw::math::Vector2D<double> > _r = _t->track_3_points((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< Frame*(*)>(_a[2])),(*reinterpret_cast< Frame*(*)>(_a[3])));
+        case 15: { vector<rw::math::Vector2D<double> > _r = _t->track_3_points((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< Frame*(*)>(_a[2])),(*reinterpret_cast< Frame*(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< vector<rw::math::Vector2D<double> >*>(_a[0]) = _r; }  break;
-        case 14: { rw::math::Jacobian _r = _t->duvStack((*reinterpret_cast< vector<rw::math::Vector2D<double> >(*)>(_a[1])));
+        case 16: { rw::math::Jacobian _r = _t->duvStack((*reinterpret_cast< vector<rw::math::Vector2D<double> >(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< rw::math::Jacobian*>(_a[0]) = _r; }  break;
         default: ;
         }
@@ -220,13 +231,13 @@ int SamplePlugin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 17;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 17)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 15;
+        _id -= 17;
     }
     return _id;
 }

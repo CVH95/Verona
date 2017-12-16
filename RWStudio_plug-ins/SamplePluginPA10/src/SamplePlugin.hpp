@@ -84,6 +84,8 @@ private slots:
 	vector<rw::math::Transform3D<double> > markerMovements(string fileName);
 	void default_restart(Device::Ptr dev, rw::kinematics::MovableFrame* marker, rw::math::Q config, rw::math::Transform3D<double> T_marker_default);
 	float du_dvEuclidean( rw::math::Vector2D<double> target, rw::math::Vector2D<double> current );
+	void store_jointVector( rw::math::Q q );
+	void store_toolPose( rw::math::Transform3D<double> T );
 
 	// Inverse Kinematics
 	rw::math::Q checkVelocityLimits(Q dq, Q limit, double delta_t);
@@ -107,6 +109,7 @@ private:
 	QTimer* _timer;
 
     	std::ifstream file;
+	std::ofstream qStore, erStore, tpStore, trStore;
 	vector<rw::math::Transform3D<double> > markerMovs;
 	int total_movs;
 	rw::common::Timer chrono;
