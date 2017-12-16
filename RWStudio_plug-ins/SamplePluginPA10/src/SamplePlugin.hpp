@@ -78,7 +78,7 @@ private slots:
 
 	void stateChangedListener(const rw::kinematics::State& state);
 
- 	// New functions
+ 	// NEW FUNCTIONS
 
 	// Global use functions
 	vector<rw::math::Transform3D<double> > markerMovements(string fileName);
@@ -88,12 +88,15 @@ private slots:
 	// Inverse Kinematics
 	rw::math::Q checkVelocityLimits(Q dq, Q limit, double delta_t);
 	rw::math::Jacobian image_Jacobian(double z, double f, rw::math::Vector2D<double> imgPoint);
+	rw::math::Jacobian stackJacs(double z, double f, vector<rw::math::Vector2D<double> > uv);
 	rw::math::Jacobian duToBase(rw::math::Transform3D<double> T_0);
 	Eigen::MatrixXd compute_Z_image_q(rw::math::Jacobian Jimage, rw::math::Jacobian S_q, rw::math::Jacobian J_q);	
 	rw::math::Q solve_dq(rw::math::Vector2D<double> uv, rw::math::Vector2D<double> reference, Eigen::MatrixXd Zimage);
 	
 	// Tracking marker frame (no vision)
 	rw::math::Vector2D<double> track_1_point(double f, Frame *marker, Frame *camera);
+	vector<rw::math::Vector2D<double> > track_3_points(double f, Frame *marker, Frame *camera);
+	rw::math::Jacobian duvStack(vector<rw::math::Vector2D<double> > du_dv);
 
 	// Vision
 
@@ -121,6 +124,7 @@ private:
 	rw::math::Q accelerationLimits;
 	
 	rw::math::Vector2D<double> imgReference;
+	vector<rw::math::Vector2D<double> > imgRefVec;
 
 };
 

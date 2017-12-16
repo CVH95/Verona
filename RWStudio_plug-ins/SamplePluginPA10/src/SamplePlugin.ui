@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>DockWidget</string>
+   <string>ROVI 1 Final Project (SDU) - Visual Servoing PA10 </string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -20,28 +20,28 @@
       <item>
        <widget class="QPushButton" name="_btn0">
         <property name="text">
-         <string>PushButton0</string>
+         <string>PB0 - Setup</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="_btn1">
         <property name="text">
-         <string>PushButton1</string>
+         <string>PB1 - Start/Stop 1 Point</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="_btn2">
         <property name="text">
-         <string>PushButton2</string>
+         <string>PB2 - Start/Stop 3 Points</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="_btn3">
         <property name="text">
-         <string>PushButton2</string>
+         <string>PB3 - Restart Simulation</string>
         </property>
        </widget>
       </item>
@@ -71,7 +71,10 @@
          </size>
         </property>
         <property name="text">
-         <string>Camera View</string>
+         <string>CAMERA VIEW:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
