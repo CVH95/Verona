@@ -35,6 +35,7 @@ public:
     QPushButton *_btn1;
     QPushButton *_btn2;
     QPushButton *_btn3;
+    QPushButton *_btn4;
     QCheckBox *_checkBox;
     QSpinBox *_spinBox;
     QSlider *_slider;
@@ -71,6 +72,11 @@ public:
         _btn3->setObjectName(QStringLiteral("_btn3"));
 
         verticalLayout->addWidget(_btn3);
+
+        _btn4 = new QPushButton(dockWidgetContents);
+        _btn4->setObjectName(QStringLiteral("_btn4"));
+
+        verticalLayout->addWidget(_btn4);
 
         _checkBox = new QCheckBox(dockWidgetContents);
         _checkBox->setObjectName(QStringLiteral("_checkBox"));
@@ -117,6 +123,7 @@ public:
         _btn1->setText(QApplication::translate("SamplePlugin", "PB1 - Start/Stop 1 Point", 0));
         _btn2->setText(QApplication::translate("SamplePlugin", "PB2 - Start/Stop 3 Points", 0));
         _btn3->setText(QApplication::translate("SamplePlugin", "PB3 - Restart Simulation", 0));
+        _btn4->setText(QApplication::translate("SamplePlugin", "PB4 - Start/Stop Color marker (Vision)", 0));
         _checkBox->setText(QApplication::translate("SamplePlugin", "CheckBox", 0));
         _winTitle->setText(QApplication::translate("SamplePlugin", "CAMERA VIEW:", 0));
         _label->setText(QApplication::translate("SamplePlugin", "Label", 0));

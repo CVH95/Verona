@@ -46,6 +46,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="_btn4">
+        <property name="text">
+         <string>PB4 - Start/Stop Color marker (Vision)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="_checkBox">
         <property name="text">
          <string>CheckBox</string>

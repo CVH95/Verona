@@ -45,10 +45,13 @@ bool mode1 = false; // tracking 1 point (btn1)
 bool mode2 = false; // tracking 3 points (btn2)
 //bool mode3 = false; // using vision with color marker (btn3)
 
+
 // Counters
 int counter = 0;
 int bt1 = 0;
 int bt2 = 0;
+int bt3 = 0;
+int bt4 = 0;
 long countdown = 1000; 
 
 //Focal length
@@ -66,14 +69,14 @@ string file_fast = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-in
 
 
 // Output files
-string q1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_joints.csv";
-string tp1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_toolPose_P.csv";
-string tr1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_toolPose_R.csv";
-string e1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_2dError.csv";
-string q3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_joints.csv";
-string tp3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_P.csv";
-string tr3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_R.csv";
-string e3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_2dError.csv";
+string q1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_joints.dat";
+string tp1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_toolPose_P.dat";
+string tr1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test1_slow_toolPose_R.dat";
+string e1_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/times/1_1000_fast.dat";
+string q3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_joints.dat";
+string tp3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_P.dat";
+string tr3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_R.dat";
+string e3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/times/3_1000_fast.dat";
 
 
 //=========================================================================================================================================================================================================
@@ -93,6 +96,7 @@ SamplePlugin::SamplePlugin():
 	connect(_btn1    ,SIGNAL(pressed()), this, SLOT(btnPressed()) );
 	connect(_btn2    ,SIGNAL(pressed()), this, SLOT(btnPressed()) );
 	connect(_btn3    ,SIGNAL(pressed()), this, SLOT(btnPressed()) );
+	connect(_btn4    ,SIGNAL(pressed()), this, SLOT(btnPressed()) );
 	connect(_spinBox  ,SIGNAL(valueChanged(int)), this, SLOT(btnPressed()) );
 
 	Image textureImage(300,300,Image::GRAY,Image::Depth8U);
@@ -133,10 +137,11 @@ void SamplePlugin::initialize()
 	// Initialize counters
 	bt1 = 0;
 	bt2 = 0;
+	bt4 = 0;
 
 	// Initialize chronometer
 	// Create timer 
-	long countdown = 1000; // miliseconds
+	long countdown = 100; // miliseconds
 	tempo = (double) countdown/1000;
 	chrono = rw::common::Timer(countdown);
 	chrono.resetAndPause();
@@ -178,6 +183,7 @@ void SamplePlugin::open(WorkCell* workcell)
     log().info() << "		>> btn1 ---> Start/Stop timer for TRACKING 1 POINT (simulated vision mode)." << "\n";
     log().info() << "		>> btn2 ---> Start/Stop timer for TRACKING 3 POINTS (simulation vision mode)." << "\n";
     log().info() << "		>> btn3 ---> Restart simulations (return to default scenario)." << "\n";
+    log().info() << "		>> btn4 ---> Enable/disable timer-loop simulation mode." << "\n";
     log().info() << "\n";
     log().info() << "----------------------------------------------------------------------------------------" << "\n";
     log().info() << "\n";
@@ -335,9 +341,10 @@ void SamplePlugin::btnPressed() {
 		mode2 = false;
 		
 		// CSV save files
-		qStore.open(q1_csv);
-		tpStore.open(tp1_csv);
-		trStore.open(tr1_csv);		
+		//qStore.open(q1_csv);
+		//tpStore.open(tp1_csv);
+		//trStore.open(tr1_csv);	
+		erStore.open(e1_csv);	
 
 		// INITIAL CONFIGURATION
 	
@@ -416,9 +423,12 @@ void SamplePlugin::btnPressed() {
 	{
 		mode1 = false;
 		mode2 = true;
-		qStore.open(q3_csv);
-		tpStore.open(tp3_csv);
-		trStore.open(tr3_csv);	
+
+		// Data saving files
+		//qStore.open(q3_csv);
+		//tpStore.open(tp3_csv);
+		//trStore.open(tr3_csv);	
+		erStore.open(e3_csv);
 		
 		// INITIAL CONFIGURATION
 	
@@ -501,6 +511,24 @@ void SamplePlugin::btnPressed() {
 	
 	}// else if btn3
 
+	else if(obj==_btn4) // Tracking color marker using vision
+	{
+		if (bt4 == 0)
+		{	
+			log().info() << "	>> btn4 ---> Start/Stop timer for tracking color marker USING VISION." << "\n";
+			bt4 = 2;
+		
+		} // if bt4
+		
+		else
+		{
+			log().info() << "	>> btn4 ---> Start/Stop timer for tracking color marker USING VISION." << "\n";
+			bt4 = 0;
+		
+		} //else
+	
+	}// else if btn4
+
 	else if(obj==_spinBox){
 		log().info() << "spin value:" << _spinBox->value() << "\n";
 	}
@@ -564,13 +592,15 @@ vector<rw::math::Transform3D<double> > SamplePlugin::markerMovements(string file
 // Function to restart simulation
 void SamplePlugin::default_restart(Device::Ptr dev, rw::kinematics::MovableFrame* marker, rw::math::Q config, rw::math::Transform3D<double> T_marker_default)
 {
-	// Clear all
+	// Clear all variables
 	markerMovs.clear();
 	bt1 = 0;
 	bt2 = 0;
 	counter = 0;
 	mode1 = false;
 	mode2 = false;
+	error_container.clear();
+	VStime.clear();
 	
 	log().info() << "\n";
 	log().info() << "==========================================================================" <<"\n";
@@ -579,8 +609,8 @@ void SamplePlugin::default_restart(Device::Ptr dev, rw::kinematics::MovableFrame
 	log().info() << "Default joint configuration:  " << config << "\n";
 	log().info() << "Default marker coordinates:  " << T_marker_default << "\n";
 	log().info() << "\n";
-	// Stop timer if necessary
 
+	// Stop timer if necessary
 	if (_timer->isActive())
 	{
 	        _timer->stop();
@@ -1056,12 +1086,14 @@ void SamplePlugin::timer()
 			// Update newP
 			newP = track_1_point(f, checkMarker, checkCam );
 			distance = du_dvEuclidean(imgReference, newP); // Update distance
+			error_container.push_back(distance);
 			log().info() << "	>> New image coordinates ------------------------->  " << newP << "\n";
 			log().info() << "	>> New Euclidean distance ------------------------->  " << distance << "\n";
 		
 			// End of IK solver 
 
 			double tempoEND = chrono.getTime();
+			VStime.push_back(tempoEND);
 			double tempoIK = tempoEND - tempoFE;
 			chrono.resetAndPause();
 	
@@ -1191,6 +1223,7 @@ void SamplePlugin::timer()
 			// End of IK solver 
 
 			double tempoEND3 = chrono.getTime();
+			VStime.push_back(tempoEND3);
 			double tempoIK3 = tempoEND3 - tempoFE3;
 			chrono.resetAndPause();
 		
@@ -1221,6 +1254,10 @@ void SamplePlugin::timer()
 			} // for l		
 
 			log().info()<< "\n";
+			
+			float max3 = *max_element(error.begin(), error.end());
+			error_container.push_back(max3);
+			
 
 			// Update RWStudio scene
 			getRobWorkStudio()->setState(_state);
@@ -1263,17 +1300,45 @@ void SamplePlugin::timer()
 	// Finish .txt file
 	if (counter == total_movs)
 	{
-		qStore.close();
-		tpStore.close();
-		trStore.close();
+		// Close IK files
+		//qStore.close();
+		//tpStore.close();
+		//trStore.close();
+		
+		// Average time
+		double accumulate = 0;
+		double fastest = *min_element(VStime.begin(), VStime.end());
+		double slowest = *max_element(VStime.begin(), VStime.end());
+		for (size_t j=0; j<VStime.size(); j++)
+		{
+			accumulate = accumulate + VStime[j];
+		}
+		double avg = (double) accumulate / VStime.size();	
+
+		// Errors
+		float maxErr = *max_element(error_container.begin(), error_container.end());
+		log().info() << tempo << "," << maxErr << "\n";
+		for( size_t i=0; i<error_container.size(); i++ )
+		{
+			erStore << i << "," << maxErr << "\n";
+		} // for i
 	
+		// Close errors file
+		erStore.close();
+
 		_timer->stop();
 		chrono.resetAndPause(); // crhono to calculate dt
+
+		// Display info		
 		log().info() << "\n";
 		log().info() << "Timer stopped\n";
 		log().info() << "Task completed. Press PushButton 2 to restore scene or read instructions for more options.\n";
+		log().info() << "Average time per operation:  " << avg << " [seconds]\n";
+		log().info() << "Fastest operation:  " << fastest << " [seconds]\n";
+		log().info() << "Slowest operation:  " << slowest << " [seconds]\n";
 		log().info() << "\n";
-
+		
+		
 	} // if counter
 
 } // timer()

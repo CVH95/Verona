@@ -128,6 +128,9 @@ private:
 	
 	rw::math::Vector2D<double> imgReference;
 	vector<rw::math::Vector2D<double> > imgRefVec;
+	vector<double> VStime;
+	vector<float> error_container;
+	vector<float> max_errors;
 
 };
 

@@ -1,0 +1,29 @@
+Marker Speed: medium
+Numbers of points being tracked: 1
+Average time per operation:  0.0274371 [seconds]
+Fastest operation:  0.018 [seconds]
+Slowest operation:  0.063 [seconds]
+
+Marker Speed: medium
+Numbers of points being tracked: 3
+Average time per operation:  0.0307066 [seconds]
+Fastest operation:  0.026 [seconds]
+Slowest operation:  0.058 [seconds]
+
+Marker Speed: fast
+Numbers of points being tracked: 3
+Average time per operation:  0.03034 [seconds]
+Fastest operation:  0.027 [seconds]
+Slowest operation:  0.047 [seconds]
+
+Marker Speed: slow
+Numbers of points being tracked: 1
+Average time per operation:  0.0269621 [seconds]
+Fastest operation:  0.018 [seconds]
+Slowest operation:  0.065 [seconds]
+
+Marker Speed: slow
+Numbers of points being tracked: 3
+Average time per operation:  0.0326527 [seconds]
+Fastest operation:  0.026 [seconds]
+Slowest operation:  0.072 [seconds]
