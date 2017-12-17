@@ -43,14 +43,13 @@ using namespace std::placeholders;
 // Booleans
 bool mode1 = false; // tracking 1 point (btn1)
 bool mode2 = false; // tracking 3 points (btn2)
-//bool mode3 = false; // using vision with color marker (btn3)
+bool mode3 = false; // using vision with color marker (btn3)
 
 
 // Counters
 int counter = 0;
 int bt1 = 0;
 int bt2 = 0;
-int bt3 = 0;
 int bt4 = 0;
 long countdown = 1000; 
 
@@ -77,6 +76,13 @@ string q3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/g
 string tp3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_P.dat";
 string tr3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test3_slow_toolPose_R.dat";
 string e3_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/times/3_1000_fast.dat";
+
+string v_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test4_fast_velocities.dat";
+string q4_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test4_fast_joints.dat";
+string tp4_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test4_fast_toolPose_P.dat";
+string tr4_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test4_fast_toolPose_R.dat";
+string timeVIS_csv = "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/genfiles/test4_fast_times.dat";
+
 
 
 //=========================================================================================================================================================================================================
@@ -127,12 +133,13 @@ void SamplePlugin::initialize()
 	getRobWorkStudio()->stateChangedEvent().add(std::bind(&SamplePlugin::stateChangedListener, this, std::placeholders::_1), this);
 
 	// Motion file
-    	markerMovs = markerMovements(file_slow);
+    	markerMovs = markerMovements(file_fast);
 	total_movs = markerMovs.size();
 	
 	// Keep modes off until a button is toggled.
 	mode1 = false;
 	mode2 = false;
+	mode3 = false;
 
 	// Initialize counters
 	bt1 = 0;
@@ -141,7 +148,7 @@ void SamplePlugin::initialize()
 
 	// Initialize chronometer
 	// Create timer 
-	long countdown = 100; // miliseconds
+	long countdown = 1000; // miliseconds
 	tempo = (double) countdown/1000;
 	chrono = rw::common::Timer(countdown);
 	chrono.resetAndPause();
@@ -313,7 +320,7 @@ void SamplePlugin::close() {
 }
 
 Mat SamplePlugin::toOpenCVImage(const Image& img) {
-	Mat res(img.getHeight(),img.getWidth(), CV_8SC3);
+	Mat res(img.getHeight(),img.getWidth(), CV_8UC3);
 	res.data = (uchar*)img.getImageData();
 	return res;
 }
@@ -339,6 +346,7 @@ void SamplePlugin::btnPressed() {
 		// activate mode 1.
 		mode1 = true;
 		mode2 = false;
+		mode3 = false;
 		
 		// CSV save files
 		//qStore.open(q1_csv);
@@ -423,6 +431,7 @@ void SamplePlugin::btnPressed() {
 	{
 		mode1 = false;
 		mode2 = true;
+		mode3 = false;
 
 		// Data saving files
 		//qStore.open(q3_csv);
@@ -513,20 +522,98 @@ void SamplePlugin::btnPressed() {
 
 	else if(obj==_btn4) // Tracking color marker using vision
 	{
-		if (bt4 == 0)
+		// activate mode 1.
+		mode1 = false;
+		mode2 = false;
+		mode3 = true;
+		
+		// CSV save files
+		qStore.open(q4_csv);
+		tpStore.open(tp4_csv);
+		trStore.open(tr4_csv);	
+		velStore.open(v_csv);	
+		timeStore.open(timeVIS_csv);	
+		//erStore.open(e1_csv);	
+
+		// INITIAL CONFIGURATION
+	
+		// If bt4 is pressed for the first time after uploading/restarting the plugin:		
+		if( bt4 == 0 )
 		{	
-			log().info() << "	>> btn4 ---> Start/Stop timer for tracking color marker USING VISION." << "\n";
-			bt4 = 2;
+			// Set marker to initial position
+			MovableFrame* marker = (MovableFrame*) _wc->findFrame("Marker");
+			//Frame* camera = _wc->findFrame("Camera");
+			dev->setQ(config, _state);
+			marker->moveTo(markerMovs[0], _state);
+			getRobWorkStudio()->setState(_state);
+	
+			// Get camera in initial view
+			if (_framegrabber != NULL) 
+			{
+				// Get the image as a RW image
+				Frame* cameraFrame = _wc->findFrame("CameraSim");
+				_framegrabber->grab(cameraFrame, _state);
+				const Image& image = _framegrabber->getImage();
+	
+				// Convert to OpenCV image
+				Mat im = toOpenCVImage(image);
+				Mat imflip, src, sss, fl;
+				cv::flip(im, imflip, 0);
+				imwrite("/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/grabbedImages/imflip.png", imflip);
+				//imflip.convertTo(src, CV_8U);
+				//imflip.convertTo(fl, CV_32F);
+				cvtColor(imflip, src, CV_BGR2RGB);  
+				imwrite("/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/grabbedImages/sss.png", src);
+
+				// Get target points 
+				vector<Point2f> centers = rastreator->colorDetector(src);
+				vector<rw::math::Vector2D<double> > points = rastreator->storeKeyPoints(centers);
+				visRef = offset(points);
+
+				// Show in QLabel
+				QImage img(imflip.data, imflip.cols, imflip.rows, imflip.step, QImage::Format_RGB888);
+				QPixmap p = QPixmap::fromImage(img);
+				unsigned int maxW = 400;
+				unsigned int maxH = 800;
+				_label->setPixmap(p.scaled(maxW,maxH,Qt::KeepAspectRatio));
 		
+			} // if _frame grabber
+
+
+			bt4 = 2; // update PushButton1 counter 
+	
+			// Start timer for the first time
+			_timer->start(countdown); // run 10 Hz timer
+			log().info() << "Button 1 ---> Timer initialized\n";
+ 
 		} // if bt4
-		
+
+		//--------------------------------------------------------------------
+	
+		// TIMER		
+
+		// when bt4 has already been toggled once
 		else
 		{
-			log().info() << "	>> btn4 ---> Start/Stop timer for tracking color marker USING VISION." << "\n";
-			bt4 = 0;
-		
-		} //else
+			// Toggle the timer on and off
+			if (!_timer->isActive())
+			{
+				 _timer->start(1000); // run 10 Hz
+				chrono.resume();
+				log().info() << "Button 1 ---> Timer running\n";
+
+			} // if _timer
 	
+			else
+			{
+				_timer->stop();
+				chrono.pause();
+				log().info() << "Button 1 ---> Timer stopped\n";
+
+			} // else _timer
+
+		} // else bt4
+
 	}// else if btn4
 
 	else if(obj==_spinBox){
@@ -596,9 +683,11 @@ void SamplePlugin::default_restart(Device::Ptr dev, rw::kinematics::MovableFrame
 	markerMovs.clear();
 	bt1 = 0;
 	bt2 = 0;
+	bt4 = 0;
 	counter = 0;
 	mode1 = false;
 	mode2 = false;
+	mode3 = false;
 	error_container.clear();
 	VStime.clear();
 	
@@ -705,12 +794,90 @@ void SamplePlugin::store_toolPose( rw::math::Transform3D<double> T )
 
 } // store_toolPose
 
+//------------------------------------------------------------------------------------------------------
+
+// Store joint velocities into file
+// Store joint configuration vector into file
+void SamplePlugin::store_velVector( rw::math::Q q, double dt )
+{
+	double a, b, c, d, e, f, g;
+	a = q(0) / dt;
+	b = q(1) / dt;
+	c = q(2) / dt;
+	d = q(3) / dt;
+	e = q(4) / dt;
+	f = q(5) / dt;
+	g = q(6) / dt;
+	
+	velStore << counter << "," << a << "," << b << "," << c << "," << d << "," << e << "," << f << "," << g;	
+	// Start new line
+	velStore << "\n";
+
+} // store_velVector
+
 //===========================================================================================================================================================================================================
 
 
 
 									// ROBOT KINEMATICS
+rw::math::Q SamplePlugin::checkJointLimits(Q dq, Q limit, Q prev)
+{
+	std::pair<rw::math::Q, rw::math::Q> robot_bounds;
+
+	vector<int> scores;
+	int score = 0;
+	int dq_size = dq.size();
+	for( size_t i = 0; i < limit.size(); i++ )
+	{
+		double lim = abs(limit(i));
+		double div = dq(i);
+		double k = abs(div);
+		
+		// First condition --> Check if dq is within velocity limits.
+
+		// Sbagliato
+		if( k > lim )
+		{
+			score = 0;
+
+		} // if k
+
+		// A posto
+		else 
+		{
+			score = score + 1;
+			scores.push_back(score);
 	
+		} // else k
+	}
+
+	// log info
+	int scores_size = scores.size();
+	if (scores_size == dq_size)
+	{
+		log().info() << "	>> Within Joint angle limits:   TRUE." << "\n";
+		cout << "	>> Within joint limits:   TRUE." << "\n";
+		
+		dq = dq;
+
+	} // if
+	
+	else
+	{	
+		log().info() << "	>> Within Joint angle limits:   FALSE." << "\n";
+		cout << "	>> Within joint limits:   FALSE." << "\n";
+
+		dq = prev;
+
+	} // else 
+
+	scores.clear();
+
+	return dq;
+	
+} // CheckJointLimits
+
+//-------------------------------------------------------------------------------	
 
 // Check Velocity limits for a new Q_new = Q_past + dQ.
 // true == within limits
@@ -764,12 +931,14 @@ rw::math::Q SamplePlugin::checkVelocityLimits(Q dq, Q limit, double delta_t)
 	if (scores_size == dq_size)
 	{
 		log().info() << "	>> Within velocity limits:   TRUE." << "\n";
+		cout << "	>> Within velocity limits:   TRUE." << "\n";
 
 	} // if
 	
 	else
 	{	
 		log().info() << "	>> Within velocity limits:   FALSE." << "\n";
+		cout << "	>> Within velocity limits:   FALSE." << "\n";
 
 	} // else 
 
@@ -993,8 +1162,24 @@ rw::math::Jacobian SamplePlugin::duvStack(vector<rw::math::Vector2D<double> > du
 
 									// COMPUTER VISION
 
+// Correct offset image-markerFrame
+vector<rw::math::Vector2D<double> > SamplePlugin::offset( vector<rw::math::Vector2D<double> > points )
+{
+	vector<rw::math::Vector2D<double> > out;
 
+	for( size_t i=0; i<points.size(); i++ )
+	{
+		rw::math::Vector2D<double> V; 
+		rw::math::Vector2D<double> W = points[i];
+		V(0) = W(0) - 1024/2;
+		V(1) = W(1) - 768/2;
+		out.push_back(V);
 
+	} // for i
+
+	return out;
+
+} // offset
 
 
 //===========================================================================================================================================================================================================
@@ -1016,6 +1201,7 @@ void SamplePlugin::timer()
 	// Move marker
 	marker->moveTo(markerMovs[counter++], _state);	
 	log().info() << "	>> Marker moved to position # " << counter << ":   " << markerMovs[counter] << "\n";
+	cout <<"	>> Marker moved to position # " << endl;
 	log().info() << "\n";
 
 	if (_framegrabber != NULL) 
@@ -1028,9 +1214,10 @@ void SamplePlugin::timer()
 
 		// Convert to OpenCV image
 		Mat im = toOpenCVImage(image);
-		Mat imflip;
+		Mat imflip, src;
 		cv::flip(im, imflip, 0);
-	
+		cvtColor(imflip, src, COLOR_BGR2RGB); 
+		
 		// current joint configuration
 		rw::math::Q q_prev = dev->getQ(_state);
 
@@ -1040,7 +1227,7 @@ void SamplePlugin::timer()
 
 	//---------------------------------------------------------
 
-		if ( mode1 == true && mode2 == false ) // tracking 1 point
+		if ( mode1 == true && mode2 == false && mode3 == false) // tracking 1 point
 		{
 
 			// Get new image point:
@@ -1121,7 +1308,7 @@ void SamplePlugin::timer()
 		
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-		else if (mode2 == true && mode1 == false) // tracking 3 points
+		else if (mode2 == true && mode1 == false && mode3 == false) // tracking 3 points
 		{  
 			// Get new image points 
 			vector<rw::math::Vector2D<double> > newVec2D = track_3_points(f, marker, camera);
@@ -1281,6 +1468,154 @@ void SamplePlugin::timer()
 
 		} // else if mode 2
 
+		else if (mode2 == false && mode1 == false && mode3 == true) // Using vision to track marker
+		{
+			// Get new image points 
+			vector<Point2f> newCenters = rastreator->colorDetector(src);
+			vector<rw::math::Vector2D<double> > points = rastreator->storeKeyPoints(newCenters);
+			vector<rw::math::Vector2D<double> > newVision = offset(points);
+
+			log().info() << "	>> Reference points   (found = " << visRef.size() << "):" << "\n";
+			log().info()<< "\n";
+			for ( size_t i = 0; i < visRef.size(); i++ )
+			{
+				log().info() << visRef[i] << "\n";
+			
+			} // for i
+
+			log().info()<< "\n";
+
+			log().info() << "	>> Points being tracked    (found = " << newVision.size() << "):" << "\n";
+			log().info()<< "\n";
+			for ( size_t j = 0; j < newVision.size(); j++ )
+			{
+				log().info() << newVision[j] << "\n";
+
+			} // for j
+
+			log().info()<< "\n";
+
+			// END OF FEATURE EXTRACTION
+
+//------------------------------------------------------------------------------------------------
+
+			double tempoFEv = chrono.getTime();
+			double dtv = tempo - tempoFEv;
+			log().info() << "	>> Feature extraction calculated in:   " << tempoFEv << "\n";
+			log().info() << "\n";
+			
+			vector<rw::math::Vector2D<double> > du_dv;
+			//float maxD = 200;
+			for( size_t k = 0; k <newVision.size(); k++ )
+			{	
+
+				//float EU = du_dvEuclidean(visRef[k], newVision[k]);
+				//if ( EU > maxD )
+				//{
+					//log().info() << "Points " << k << "might be false positives. d = " << EU << "\n";
+		
+				//} // if EU
+				
+				//else
+				//{	
+					rw::math::Vector2D<double> t;
+					rw::math::Vector2D<double> po = newVision[k];
+					rw::math::Vector2D<double> re = visRef[k];
+					t(0) = re(0) - po(0);
+					t(1) = re(1) - po(1);
+					du_dv.push_back(t);
+					log().info() << "	>> Displacement of point " << k << ":  " << du_dv[k] <<"\n";
+					cout << "	>> Displacement of point " << k << ":  " << du_dv[k] <<"\n";
+
+				//} // else 
+
+			} // for k
+
+			log().info() << "\n";	
+		
+			// IK solver
+
+			// Group du_dv 
+			rw::math::Jacobian disp = duvStack(du_dv);
+	
+	//---------------------------------------------------------
+
+			     // CONTROL LOOP:
+
+	//---------------------------------------------------------
+
+			// Stack jacobians (2*npointsx6)
+			rw::math::Jacobian Jimage = stackJacs(z, f, newVision);
+
+			// Compute Sq (6x6)
+			rw::math::Transform3D<double> T0 = dev->baseTframe(camera, _state);
+			rw::math::Jacobian Sq = duToBase(T0);
+
+			// Compute Jq (6x7)
+			rw::math::Jacobian Jq = dev->baseJframe(camera, _state);
+
+			// Compute Zimage (2*npointsx7)
+			Eigen::MatrixXd Zimage = compute_Z_image_q(Jimage, Sq, Jq);
+		
+			// Calculate Zimage pseudoinverse:
+			Eigen::MatrixXd ZiT = Zimage.transpose(); // Tranpose of Zi 
+			Eigen::MatrixXd Zinv = ZiT * LinearAlgebra::pseudoInverse(Zimage*ZiT);
+
+			rw::math::Jacobian dqE(Zinv*disp.e());
+	
+			// Convert to joint vector
+			rw::math::Q dq_rawV(dqE.e());
+	
+			//rw::math::Q dq_raw3 = solve_dq_robust( newVec2D, imgRefVec,  marker, camera);
+			rw::math::Q dqV = checkVelocityLimits(dq_rawV, vel_limits, dtv);
+
+			// Update robot state
+			rw::math::Q qV_raw = dev->getQ(_state);
+			qV_raw += dqV;
+			
+			// Check position limits
+			rw::math::Q bound = robot_bounds.first;
+			rw::math::Q qV = checkJointLimits( qV_raw, bound, q_prev );
+
+			// Update robot state
+			dev->setQ(qV, _state);
+
+			// End of IK solver 
+
+			double tempoENDv = chrono.getTime();
+			VStime.push_back(tempoENDv);
+			double tempoIKv = tempoENDv - tempoFEv;
+			chrono.resetAndPause();
+
+			// Update RWStudio scene
+			getRobWorkStudio()->setState(_state);
+
+			// Display info
+			rw::math::Q q_currentV = dev->getQ(_state);
+			store_jointVector(q_currentV);
+			store_velVector(q_currentV - q_prev, dtv);
+			log().info() << "	>> Joint displacement dq:   " << dqV << "\n";
+			cout << "	>> Joint displacement dq:   " << dqV << "\n";
+			log().info() << "\n";
+			log().info() << "	>> PREVIOUS joint vector Q:   " << q_prev << "\n";
+			log().info() << "	>> UPDATED joint vector Q:   " << q_currentV << "\n";
+			cout << "	>> UPDATED joint vector Q:   " << q_currentV << "\n";
+			log().info() << "\n";
+			log().info() << "	>> Inverse Kinematics solved in:   " << tempoIKv << "\n";
+			log().info() << "\n";
+
+			rw::math::Transform3D<double> TCPV = dev->baseTframe(cameraFrame, _state);	
+			store_toolPose(TCPV);	
+			log().info() << "	>> Updated tool pose:   " << TCPV << "\n";
+			log().info() << "	>> Visual servoing operating time:   " << tempoENDv << "\n";
+			log().info() << "	>> Time consumed ------------------>  " << (tempoENDv / tempo)*100 << "%" << "\n";
+
+			timeStore << tempoFEv << "," << dtv << "," << tempoENDv << "\n";
+
+
+		} // else if mode 3
+
+
 		// Show in QLabel
 		QImage img(imflip.data, imflip.cols, imflip.rows, imflip.step, QImage::Format_RGB888);
 		QPixmap p = QPixmap::fromImage(img);
@@ -1301,10 +1636,12 @@ void SamplePlugin::timer()
 	if (counter == total_movs)
 	{
 		// Close IK files
-		//qStore.close();
-		//tpStore.close();
-		//trStore.close();
-		
+		qStore.close();
+		tpStore.close();
+		trStore.close();
+		velStore.close();
+		timeStore.close();
+
 		// Average time
 		double accumulate = 0;
 		double fastest = *min_element(VStime.begin(), VStime.end());
@@ -1315,16 +1652,16 @@ void SamplePlugin::timer()
 		}
 		double avg = (double) accumulate / VStime.size();	
 
-		// Errors
+		/*// Errors
 		float maxErr = *max_element(error_container.begin(), error_container.end());
 		log().info() << tempo << "," << maxErr << "\n";
 		for( size_t i=0; i<error_container.size(); i++ )
 		{
 			erStore << i << "," << maxErr << "\n";
-		} // for i
+		} // for i*/
 	
 		// Close errors file
-		erStore.close();
+		//erStore.close();
 
 		_timer->stop();
 		chrono.resetAndPause(); // crhono to calculate dt

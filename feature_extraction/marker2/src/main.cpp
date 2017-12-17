@@ -157,6 +157,8 @@ void detector(Mat src, int examp, int total)
 	addWeighted(redCircle, 1.0, blueCircle, 1.0, 0.0, planes[0]);
 	combined = planes[0].clone();
 
+	imshow("combined", combined);
+
 	Mat thresholded;
 	merge(planes, 3, thresholded);
 
@@ -366,6 +368,7 @@ int main(int argc, char* argv[])
 
 		cout << endl;
 		cout << "	>> Image #" << imgNum+1 << " loaded correctly." << endl;
+		cout << "	>> Type: " << src.type() << endl; 
 		cout << endl;
 
 	//-----------------------------------------------------------

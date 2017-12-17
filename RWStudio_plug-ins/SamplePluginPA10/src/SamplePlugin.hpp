@@ -30,6 +30,7 @@
 
 // OpenCV 3
 #include <opencv2/opencv.hpp>
+#include "color.hpp"
 
 // Qt
 #include <QTimer>
@@ -86,8 +87,10 @@ private slots:
 	float du_dvEuclidean( rw::math::Vector2D<double> target, rw::math::Vector2D<double> current );
 	void store_jointVector( rw::math::Q q );
 	void store_toolPose( rw::math::Transform3D<double> T );
+	void store_velVector( rw::math::Q q, double dt );
 
 	// Inverse Kinematics
+	rw::math::Q checkJointLimits(Q dq, Q limit,  Q prev);
 	rw::math::Q checkVelocityLimits(Q dq, Q limit, double delta_t);
 	rw::math::Jacobian image_Jacobian(double z, double f, rw::math::Vector2D<double> imgPoint);
 	rw::math::Jacobian stackJacs(double z, double f, vector<rw::math::Vector2D<double> > uv);
@@ -101,15 +104,17 @@ private slots:
 	rw::math::Jacobian duvStack(vector<rw::math::Vector2D<double> > du_dv);
 
 	// Vision
+	vector<rw::math::Vector2D<double> > offset( vector<rw::math::Vector2D<double> > points );
 
 
 private:
+	color * rastreator;
 	static cv::Mat toOpenCVImage(const rw::sensor::Image& img);
 
 	QTimer* _timer;
 
     	std::ifstream file;
-	std::ofstream qStore, erStore, tpStore, trStore;
+	std::ofstream qStore, erStore, tpStore, trStore, velStore, timeStore;
 	vector<rw::math::Transform3D<double> > markerMovs;
 	int total_movs;
 	rw::common::Timer chrono;
@@ -128,6 +133,7 @@ private:
 	
 	rw::math::Vector2D<double> imgReference;
 	vector<rw::math::Vector2D<double> > imgRefVec;
+	vector<rw::math::Vector2D<double> > visRef;
 	vector<double> VStime;
 	vector<float> error_container;
 	vector<float> max_errors;
