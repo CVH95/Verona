@@ -48,18 +48,18 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
+CMAKE_SOURCE_DIR = /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
+CMAKE_BINARY_DIR = /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

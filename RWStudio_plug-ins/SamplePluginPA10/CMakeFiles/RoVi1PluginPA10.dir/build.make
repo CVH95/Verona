@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
+CMAKE_SOURCE_DIR = /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
+CMAKE_BINARY_DIR = /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
 
 # Include any dependencies generated for this target.
 include CMakeFiles/RoVi1PluginPA10.dir/depend.make
@@ -58,30 +58,30 @@ include CMakeFiles/RoVi1PluginPA10.dir/progress.make
 include CMakeFiles/RoVi1PluginPA10.dir/flags.make
 
 ui_SamplePlugin.h: src/SamplePlugin.ui
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ui_SamplePlugin.h"
-	/usr/lib/x86_64-linux-gnu/qt5/bin/uic -o /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/ui_SamplePlugin.h /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.ui
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ui_SamplePlugin.h"
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic -o /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/ui_SamplePlugin.h /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.ui
 
 src/moc_SamplePlugin.cpp: src/SamplePlugin.hpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating src/moc_SamplePlugin.cpp"
-	cd /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src && /usr/lib/x86_64-linux-gnu/qt5/bin/moc @/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp_parameters
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating src/moc_SamplePlugin.cpp"
+	cd /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src && /usr/lib/x86_64-linux-gnu/qt5/bin/moc @/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp_parameters
 
 qrc_resources.cpp: src/pa_icon.png
 qrc_resources.cpp: src/resources.qrc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating qrc_resources.cpp"
-	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc --name resources --output /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/resources.qrc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating qrc_resources.cpp"
+	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc --name resources --output /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/resources.qrc
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: src/SamplePlugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o -c /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o -c /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.requires:
 
@@ -96,16 +96,16 @@ CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o: src/color.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o -c /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o -c /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp
 
 CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o.requires:
 
@@ -120,16 +120,16 @@ CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o.provides.build: CMakeFiles/RoVi1P
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: src/moc_SamplePlugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o -c /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o -c /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp > CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.requires:
 
@@ -144,16 +144,16 @@ CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.provides.build: CMakeF
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: qrc_resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o -c /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o -c /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp > CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp > CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o.requires:
 
@@ -181,27 +181,28 @@ libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/build.make
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_lua_s.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/liblua51.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_algorithms.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathplanners.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathoptimization.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_simulation.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_opengl.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assembly.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_task.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_calibration.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csg.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_control.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_proximitystrategies.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libyaobi.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libpqp.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libfcl.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_lua_s.a
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/liblua5.2.so
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libm.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_algorithms.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_pathplanners.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_pathoptimization.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_simulation.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_opengl.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_assembly.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_task.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_calibration.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_csg.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_control.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_proximitystrategies.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/libyaobi.a
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/libpqp.a
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libfcl.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libxerces-c.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assimp.a
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libassimp.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
@@ -214,36 +215,35 @@ libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_qhull.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csgjs.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_unzip.a
-libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libz.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_qhull.a
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_csgjs.a
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libdl.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5OpenGL.so.5.5.1
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_lua_s.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/liblua51.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_algorithms.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathplanners.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathoptimization.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_simulation.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_opengl.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assembly.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_task.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_calibration.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csg.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_control.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_proximitystrategies.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libyaobi.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libpqp.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libfcl.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_lua_s.a
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/liblua5.2.so
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libm.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_algorithms.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_pathplanners.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_pathoptimization.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_simulation.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_opengl.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_assembly.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_task.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_calibration.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_csg.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_control.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_proximitystrategies.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/libyaobi.a
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/libpqp.a
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libfcl.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libxerces-c.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assimp.a
+libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libassimp.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
@@ -256,58 +256,33 @@ libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libpthread.so
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_qhull.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csgjs.a
-libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_unzip.a
-libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libz.so
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_qhull.a
+libs/Release/libRoVi1PluginPA10.so: /home/charlie/RobWork/RobWork/libs/release/librw_csgjs.a
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libdl.so
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_face3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_text3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_video3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_videostab.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_superres.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_stitching.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_shape.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_photo.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_objdetect.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_hal.a
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_calib3d.so.3.0.0
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.5.1
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.5.1
 libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.5.1
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0
-libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_core3.so.3.2.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_features2d.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_ml.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_highgui.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_videoio.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_imgcodecs.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_flann.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_video.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_imgproc.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_core.so.3.0.0
+libs/Release/libRoVi1PluginPA10.so: /usr/local/lib/libopencv_hal.a
+libs/Release/libRoVi1PluginPA10.so: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
 libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared module libs/Release/libRoVi1PluginPA10.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared module libs/Release/libRoVi1PluginPA10.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RoVi1PluginPA10.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -329,6 +304,6 @@ CMakeFiles/RoVi1PluginPA10.dir/clean:
 CMakeFiles/RoVi1PluginPA10.dir/depend: ui_SamplePlugin.h
 CMakeFiles/RoVi1PluginPA10.dir/depend: src/moc_SamplePlugin.cpp
 CMakeFiles/RoVi1PluginPA10.dir/depend: qrc_resources.cpp
-	cd /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10 /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/RoVi1PluginPA10.dir/depend
 

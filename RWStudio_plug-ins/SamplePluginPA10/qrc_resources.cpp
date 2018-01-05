@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/pa_icon.png
+  // /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/pa_icon.png
   0x0,0x2,0xcb,0xed,
   0x89,
   0x50,0x4e,0x47,0xd,0xa,0x1a,0xa,0x0,0x0,0x0,0xd,0x49,0x48,0x44,0x52,0x0,

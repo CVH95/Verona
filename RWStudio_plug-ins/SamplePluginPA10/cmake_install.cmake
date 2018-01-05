@@ -1,4 +1,4 @@
-# Install script for directory: /home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
+# Install script for directory: /home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

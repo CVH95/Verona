@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp" "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
-  "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp" "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
-  "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp" "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o"
-  "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp" "/home/student/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
+  "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/qrc_resources.cpp" "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
+  "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/SamplePlugin.cpp" "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
+  "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/color.cpp" "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/color.cpp.o"
+  "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/src/moc_SamplePlugin.cpp" "/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -23,27 +23,24 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/student/RobWork/RobWork/cmake/../ext/boostbindings"
-  "/usr/local/include/eigen3"
-  "/home/student/RobWork/RobWork/cmake/../src"
-  "/home/student/RobWork/RobWork/cmake/../ext/rwyaobi"
-  "/home/student/RobWork/RobWork/cmake/../ext/rwpqp"
-  "/home/student/RobWork/RobWork/cmake/../ext/lua/src"
-  "/home/student/RobWork/RobWork/cmake/../ext/qhull/src"
-  "/home/student/RobWork/RobWork/cmake/../ext/csgjs/src"
-  "/home/student/RobWork/RobWork/cmake/../ext/unzip"
-  "/home/student/RobWork/RobWork/cmake/../ext/assimp/include"
+  "/home/charlie/RobWork/RobWork/cmake/../ext/boostbindings"
+  "/usr/include/eigen3"
+  "/home/charlie/RobWork/RobWork/cmake/../src"
+  "/home/charlie/RobWork/RobWork/cmake/../ext/rwyaobi"
+  "/home/charlie/RobWork/RobWork/cmake/../ext/rwpqp"
+  "/usr/include/lua5.2"
+  "/home/charlie/RobWork/RobWork/cmake/../ext/qhull/src"
+  "/home/charlie/RobWork/RobWork/cmake/../ext/csgjs/src"
+  "/usr/include/assimp"
   "/usr/include/x86_64-linux-gnu/qt5"
   "/usr/include/x86_64-linux-gnu/qt5/QtCore"
   "/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64"
   "/usr/include/x86_64-linux-gnu/qt5/QtGui"
   "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"
   "/usr/include/x86_64-linux-gnu/qt5/QtOpenGL"
-  "/home/student/RobWork/RobWorkStudio/cmake/../src"
-  "/home/student/RobWork/RobWorkStudio/cmake/../ext/qtpropertybrowser/src"
+  "/home/charlie/RobWork/RobWorkStudio/cmake/../src"
+  "/home/charlie/RobWork/RobWorkStudio/cmake/../ext/qtpropertybrowser/src"
   "."
-  "/opt/ros/kinetic/include/opencv-3.2.0-dev"
-  "/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv"
   )
 
 # Targets to which this target links.
