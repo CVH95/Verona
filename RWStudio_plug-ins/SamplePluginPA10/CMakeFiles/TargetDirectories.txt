@@ -1,3 +1,0 @@
-/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/edit_cache.dir
-/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/rebuild_cache.dir
-/home/charlie/workspace/RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/CMakeFiles/RoVi1PluginPA10.dir

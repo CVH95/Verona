@@ -1,3 +1,0 @@
-/home/student/workspace/RoVi1-Final-Project/feature_extraction/marker2/src/CMakeFiles/edit_cache.dir
-/home/student/workspace/RoVi1-Final-Project/feature_extraction/marker2/src/CMakeFiles/rebuild_cache.dir
-/home/student/workspace/RoVi1-Final-Project/feature_extraction/marker2/src/CMakeFiles/color_tracking.dir
