@@ -1,6 +1,8 @@
-This repo contains the final project for ROVI 1 (SDU).
+# ROVI1 Visual Servoing
 
-# Compiling:
+This repository contains the final project for ROVI 1 (SDU).
+
+### Downloading and compiling the RobWorkStudio Pluggin:
 
 ```sh
   $ mkdir ~/workspace
@@ -13,7 +15,7 @@ This repo contains the final project for ROVI 1 (SDU).
   $ make 
 ```
 
-# To compile the tests for both feature extractors:
+### Compiling the tests for both feature extractors:
 
 ```sh
   $ cd ~/workspace/RoVi1-Final-Project/feature_extraction/marker2/src
@@ -24,4 +26,12 @@ This repo contains the final project for ROVI 1 (SDU).
   $ make 
 ```
 
-The RWStudio plug-in only uses the color marker for real feature-extraction visual servoing.
+The RWStudio pluggin only uses the color marker for real feature-extraction visual servoing.
+
+### Visual Servoing Block Diagram
+
+![alt text](diagram.png)
+
+### Documentation
+[Robwork](http://www.robwork.dk/apidoc/nightly/rw/) installation and documentation.
+[OpenCV](https://docs.opencv.org/3.4.0/d9/df8/tutorial_root.html) installation and documentation.
