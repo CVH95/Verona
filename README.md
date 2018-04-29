@@ -33,5 +33,6 @@ The RWStudio pluggin only uses the color marker for real feature-extraction visu
 ![alt text](diagram.png)
 
 ### Documentation
-[Robwork](http://www.robwork.dk/apidoc/nightly/rw/) installation and documentation.
-[OpenCV](https://docs.opencv.org/3.4.0/d9/df8/tutorial_root.html) installation and documentation.
+
+- [Robwork](http://www.robwork.dk/apidoc/nightly/rw/) installation and documentation.
+- [OpenCV](https://docs.opencv.org/3.4.0/d9/df8/tutorial_root.html) installation and documentation.
