@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rovi1_demo_manager</name>
+  <version>0.0.0</version>
+  <description>The rovi1_demo_manager package</description>
+
+  <maintainer email="cavie17@student.sdu.dk">Carlos</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>pointgrey_camera_description</depend>
+  <depend>hector_models_description</depend>
+  <depend>pa10_description</depend>
+
+  <export>
+  </export>
+
+</package>

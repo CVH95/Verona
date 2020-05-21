@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Marker macro model -->
+  <xacro:macro name="marker" params="name parent scale *origin">
+      <joint name="${name}_joint" type="fixed">
+        <xacro:insert_block name="origin" />
+        <parent link="${parent}"/>
+        <child link="${name}_link"/>
+      </joint>
+      <link name="${name}_link">
+        <inertial>
+              <origin xyz="0 0 0" rpy="0 0 0"/>
+              <mass value="1.0" />
+              <inertia ixx="0.0741666666667" ixy="0.0" ixz="0.0" iyy="0.0585416666667" iyz="0.0" izz="0.0260416666667"/>
+          </inertial>
+          <collision>
+              <origin xyz="0 0 0" rpy="0 0 0"/>
+              <geometry>
+                  <mesh filename="package://workcell_scene_description/meshes/marker.dae" scale="${scale} ${scale} ${scale}"/>
+              </geometry>
+          </collision>
+          <visual>
+              <origin rpy="0 0 0" xyz="0 0 0"/>
+              <geometry>r
+                  <mesh filename="package://workcell_scene_description/meshes/marker.dae" scale="${scale} ${scale} ${scale}"/>
+              </geometry>
+          </visual>
+      </link>
+      <gazebo reference="${name}_link">
+      </gazebo>
+
+    </xacro:macro>
+</robot>

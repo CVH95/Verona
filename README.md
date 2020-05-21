@@ -12,7 +12,7 @@ This repository contains the final project for ROVI 1 (SDU).
   $ mkdir build
   $ cd build/
   $ cmake ../
-  $ make 
+  $ make
 ```
 
 ### Compiling the tests for both feature extractors:
@@ -20,10 +20,10 @@ This repository contains the final project for ROVI 1 (SDU).
 ```sh
   $ cd ~/workspace/RoVi1-Final-Project/feature_extraction/marker2/src
   $ cmake .
-  $ make 
+  $ make
   $ cd ~/workspace/RoVi1-Final-Project/feature_extraction/marker3/src
-  $ cmake . 
-  $ make 
+  $ cmake .
+  $ make
 ```
 
 The RWStudio pluggin only uses the color marker for real feature-extraction visual servoing.
