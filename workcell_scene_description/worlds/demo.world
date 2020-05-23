@@ -86,7 +86,7 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <model name='cathedral_background'>
-      <pose frame=''>3.43398 0.117118 1 0 -0 0</pose>
+      <pose frame=''>6.16006 -0.443693 1 0 -0 0</pose>
       <static>1</static>
       <link name='cathedral_background'>
         <inertial>
@@ -144,15 +144,15 @@
       </link>
     </model>
     <state world_name='default'>
-      <sim_time>72 119000000</sim_time>
-      <real_time>72 442069250</real_time>
-      <wall_time>1590060909 146208252</wall_time>
-      <iterations>72119</iterations>
+      <sim_time>66 319000000</sim_time>
+      <real_time>66 625364681</real_time>
+      <wall_time>1590159332 933675134</wall_time>
+      <iterations>66319</iterations>
       <model name='cathedral_background'>
-        <pose frame=''>5.09286 0.086617 1 0 -0 3.14159</pose>
+        <pose frame=''>5.34048 0.054663 1 0 -0 3.13879</pose>
         <scale>1 1 1</scale>
         <link name='cathedral_background'>
-          <pose frame=''>5.09286 0.086617 1 0 -0 3.14159</pose>
+          <pose frame=''>5.34048 0.054663 1 0 -0 3.13879</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -174,7 +174,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>-6.05951 -19.4638 13.8736 0 0.526106 1.34858</pose>
+        <pose frame=''>-9.49969 -8.54753 6.38857 0 0.271192 0.366225</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

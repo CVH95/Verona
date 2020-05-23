@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="config_file" default="$(find rovi1_demo_manager)/config/vision_server_params.yaml"/>
+  <arg name="calibration_file" default="$(find rovi1_demo_manager)/config/asus.yaml"/>
+
+  <rosparam command="load" file="$(arg config_file)"/>
+
+  <node name="rovi1_vision_server" pkg="vision_server_ros" type="vision_server_ros_node" output="screen"></node>
+      <param name="calibration" type="str" value="$(arg calibration_file)"/>
+</launch>

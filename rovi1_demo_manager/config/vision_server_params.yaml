@@ -1,0 +1,5 @@
+service_id: rovi1_vision_server
+img_topic: /asus/rgb/image_raw
+publish_images: true
+marker_size: 0.2
+center_distance: 0.085
