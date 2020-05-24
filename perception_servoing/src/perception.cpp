@@ -33,19 +33,14 @@ Eigen::Affine3d createAffineFromVectors(cv::Vec3d tvec, cv::Vec3d rvec)
 cv::Rect getLargestRect(std::vector<cv::Rect> vec)
 {
   cv::Rect max = vec[0];
-  cv::Rect output;
   for (int i = 0; i < vec.size(); i++)
   {
     if (vec[i].width >= max.width && vec[i].height >= max.height)
     {
-      output = vec[i];
-    }
-    else
-    {
-      output = max;
+      max = vec[i];
     }
   }
-  return output;
+  return max;
 }
 
 std::vector<cv::Point2f> getCornersFromRect(cv::Rect rectangle)
@@ -73,6 +68,19 @@ double euclideanDistance(Eigen::Affine3d a, Eigen::Affine3d b)
   return sqrt(difference);
 }
 
+bool cvPointComparison(const cv::Point2f& a, const cv::Point2f& b)
+{
+  return (a.x * a.x + a.y * a.y < b.x * b.x + b.y * b.y);
+}
+
+cv::Point2f computeRectCenter(cv::Rect rect)
+{
+  cv::Point2f center;
+  center.x = rect.x + rect.width / 2;
+  center.y = rect.y + rect.height / 2;
+  return center;
+}
+
 cv::Mat drawMarkerAxis(cv::Mat frame, Eigen::Affine3d pose, cv::Mat cam_k, cv::Mat cam_d)
 {
   cv::Mat output = frame;
@@ -96,6 +104,14 @@ cv::Mat drawMarkerAxis(cv::Mat frame, Eigen::Affine3d pose, cv::Mat cam_k, cv::M
 bool findMarkerFromDots(cv::Mat& frame, Eigen::Affine3d& pose, double marker_size, cv::Mat cam_k, cv::Mat cam_d, int& e,
                         std::string& m)
 {
+  // Get camera params:
+  double fx, fy;
+  cv::Point2f image_center;
+  fx = cam_k.at<double>(0, 0);
+  fy = cam_k.at<double>(1, 1);
+  image_center.x = cam_k.at<double>(0, 2);
+  image_center.y = cam_k.at<double>(1, 2);
+
   // Initial blurr
   cv::GaussianBlur(frame, frame, cv::Size(3, 3), 2, 2);
 
@@ -152,40 +168,69 @@ bool findMarkerFromDots(cv::Mat& frame, Eigen::Affine3d& pose, double marker_siz
     return false;
   }
 
-  // Draw detected circles
-  cv::Mat box = cv::Mat::zeros(red_n_blue.size(), CV_8UC3);
-  for (int i = 0; i < contours.size(); i++)
-  {
-    cv::drawContours(box, contours, -1, cv::Scalar(0, 0, 255), 1);
-    cv::rectangle(box, bound_rect[i], cv::Scalar(0, 255, 255), 3, 8, 0);
-    cv::circle(box, center[i], radius[i], cv::Scalar(0, 0, 255), -1, 8, 0);
-    cv::circle(box, center[i], 3, cv::Scalar(0, 255, 255), -1, 8, 0);
-  }
-
-  std::vector<std::vector<cv::Point2f>> marker_vec;
-  marker_vec.push_back(center);
-
-  // Estimate pose
-  std::vector<cv::Vec3d> tvecs, rvecs;
-  cv::aruco::estimatePoseSingleMarkers(marker_vec, marker_size, cam_k, cam_d, rvecs, tvecs);
-
-  if (tvecs.size() > 2)
+  if (center.size() > 4)
   {
     e = 405;
     m = "Too many centers found";
     return false;
   }
 
+  // Sort vectors according to distance to image origin
+  std::sort(center.begin(), center.end(), cvPointComparison);
+
+  // Create cv::Rect from centers
+  cv::Point2f top_left = center[0];
+  cv::Point2f bottom_right = center[3];
+  int r_w = bottom_right.x - top_left.x;
+  int r_h = bottom_right.y - top_left.y;
+  cv::Rect mini_marker(top_left.x, top_left.y, r_w, r_h);
+  cv::Point2f keypoint = computeRectCenter(mini_marker);
+
+  // Draw detected circles
+  cv::Mat box = cv::Mat::zeros(red_n_blue.size(), CV_8UC3);
+  for (int i = 0; i < contours.size(); i++)
+  {
+    cv::drawContours(box, contours, -1, cv::Scalar(0, 0, 255), 1);
+    cv::circle(box, center[i], radius[i], cv::Scalar(0, 0, 255), -1, 8, 0);
+    cv::circle(box, center[i], 6, cv::Scalar(0, 255, 255), -1, 8, 0);
+  }
+  cv::rectangle(box, mini_marker, cv::Scalar(0, 255, 255), 3, 8, 0);
+
+  std::vector<std::vector<cv::Point2f>> marker_vec;
+  marker_vec.push_back(center);
+
+  // Estimate pose
+  cv::Vec3d rvec(0, 0, 0);
+  cv::Vec3d tvec;
+  double depth_x = (double)(marker_size * 655.302) / mini_marker.width;
+  double depth_y = (double)(marker_size * 655.302) / mini_marker.height;
+  double depth = (depth_x + depth_y) / 2;
+
+  tvec[2] = depth;                                         // Get Z
+  tvec[0] = (keypoint.x - image_center.x) * (depth / fx);  // Get X
+  tvec[1] = (keypoint.y - image_center.y) * (depth / fy);  // Get Y
+
   e = 0;
   m = "Success";
-  pose = createAffineFromVectors(tvecs[0], rvecs[0]);
+  pose = createAffineFromVectors(tvec, rvec);
   frame = box;
+
+  std::cout << "Detected from color at: " << pose.translation().x() << ", " << pose.translation().y() << ", "
+            << pose.translation().z() << std::endl;
   return true;
 }
 
 bool findMarkerFromShape(cv::Mat& frame, Eigen::Affine3d& pose, double marker_size, cv::Mat cam_k, cv::Mat cam_d,
                          int& e, std::string& m)
 {
+  // Get camera params:
+  double fx, fy;
+  cv::Point2f image_center;
+  fx = cam_k.at<double>(0, 0);
+  fy = cam_k.at<double>(1, 1);
+  image_center.x = cam_k.at<double>(0, 2);
+  image_center.y = cam_k.at<double>(1, 2);
+
   // Initial blurr
   cv::GaussianBlur(frame, frame, cv::Size(3, 3), 2, 2);
 
@@ -197,7 +242,7 @@ bool findMarkerFromShape(cv::Mat& frame, Eigen::Affine3d& pose, double marker_si
   cv::Mat green;
   cv::inRange(hsv, cv::Scalar(40, 100, 100), cv::Scalar(80, 255, 255), green);
 
-  int m_size = 4;
+  int m_size = 2;
   cv::Mat element =
       cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(m_size + 1, m_size + 1), cv::Point(m_size, m_size));
   morphologyEx(green, green, cv::MORPH_OPEN, element, cv::Point(-1, -1), 6);
@@ -223,34 +268,36 @@ bool findMarkerFromShape(cv::Mat& frame, Eigen::Affine3d& pose, double marker_si
     return false;
   }
 
-  cv::Mat box = cv::Mat::zeros(green.size(), CV_8UC3);
-  for (int i = 0; i < contours.size(); i++)
-  {
-    cv::drawContours(box, contours, -1, cv::Scalar(0, 0, 255), 1);
-    cv::rectangle(box, bound_rect[i], cv::Scalar(0, 255, 255), 3, 8, 0);
-  }
-
   // Get largest bounding box
   cv::Rect marker_rect = getLargestRect(bound_rect);
+  cv::Point2f keypoint = computeRectCenter(marker_rect);
   std::vector<cv::Point2f> corners = getCornersFromRect(marker_rect);
-  std::vector<std::vector<cv::Point2f>> marker_corners;
-  marker_corners.push_back(corners);
+
+  cv::Mat box = cv::Mat::zeros(green.size(), CV_8UC3);
+  cv::rectangle(box, marker_rect, cv::Scalar(0, 255, 255), 3, 8, 0);
+  for (int i = 0; i < corners.size(); i++)
+  {
+    cv::circle(box, corners[i], 6, cv::Scalar(0, 0, 255), -1, 8, 0);
+  }
 
   // Estimate pose
-  std::vector<cv::Vec3d> tvecs, rvecs;
-  cv::aruco::estimatePoseSingleMarkers(marker_corners, marker_size, cam_k, cam_d, rvecs, tvecs);
+  cv::Vec3d rvec(0, 0, 0);
+  cv::Vec3d tvec;
+  double depth_x = (double)(marker_size * 655.302) / marker_rect.width;
+  double depth_y = (double)(marker_size * 655.302) / marker_rect.height;
+  double depth = (depth_x + depth_y) / 2;
 
-  if (tvecs.size() > 2)
-  {
-    e = 405;
-    m = "Too many centers found";
-    return false;
-  }
+  tvec[2] = depth;                                         // Get Z
+  tvec[0] = (keypoint.x - image_center.x) * (depth / fx);  // Get X
+  tvec[1] = (keypoint.y - image_center.y) * (depth / fy);  // Get Y
 
   e = 0;
   m = "Success";
-  pose = createAffineFromVectors(tvecs[0], rvecs[0]);
+  pose = createAffineFromVectors(tvec, rvec);
   frame = box;
+
+  std::cout << "Detected from shape at: " << pose.translation().x() << ", " << pose.translation().y() << ", "
+            << pose.translation().z() << std::endl;
   return true;
 }
 

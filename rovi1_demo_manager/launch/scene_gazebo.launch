@@ -40,8 +40,15 @@
 
   <!-- Launch rviz-->
   <group if="$(arg rviz)">
-      <include file="$(find ur5_moveit_config)/launch/moveit_rviz.launch">
-          <arg name="config" default="true"/>
-      </include>
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find rovi1_demo_manager)/config/default.rviz" />
   </group>
+
+  <!-- Launch trajectory generation for the marker -->
+  <node name="marker_trajectory_node" pkg="planning_servoing" type="marker_trajectory_node" output="screen"></node>
+    <param name="gazebo_topic" type="str" value="gazebo/set_link_state"/>
+    <param name="link_gazebo" type="str" value="robot::marker_link"/>
+    <param name="reference_gazebo" type="str" value="ground_plane::link"/>
+    <param name="planning_group" type="str" value="manipulator"/>
+    <param name="link_rviz" type="str" value="marker_link"/>
+    <param name="reference_rviz" type="str" value="world"/>
 </launch>
