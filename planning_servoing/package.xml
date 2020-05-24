@@ -12,11 +12,14 @@
   <depend>rosconsole</depend>
   <depend>roscpp</depend>
   <depend>roslib</depend>
+  <depend>std_msgs</depend>
   <depend>gazebo_msgs</depend>
   <depend>geometry_msgs</depend>
+  <depend>vision_lib_msgs</depend>
   <depend>tf2_ros</depend>
+  <depend>eigen_conversions</depend>
 
-  <!-- <depend>moveit_core</depend>
+  <depend>moveit_core</depend>
   <depend>moveit_commander</depend>
   <depend>moveit_msgs</depend>
   <depend>moveit_planners_ompl</depend>
@@ -26,7 +29,7 @@
   <depend>moveit_ros_visualization</depend>
   <depend>moveit_visual_tools</depend>
   <depend>moveit_fake_controller_manager</depend>
-  <depend>moveit_simple_controller_manager</depend> -->
+  <depend>moveit_simple_controller_manager</depend>
 
   <depend>yaml-cpp</depend>
 

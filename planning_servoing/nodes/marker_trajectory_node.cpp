@@ -18,6 +18,7 @@
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 
+#include "std_msgs/Bool.h"
 #include "moveit_msgs/CollisionObject.h"
 #include "geometry_msgs/Pose.h"
 #include "geometry_msgs/Twist.h"
@@ -230,8 +231,8 @@ int main(int argc, char** argv)
   ros::NodeHandle nh;
 
   std::string gz_topic, link_gz, link_rviz, ref_rviz, ref_gz;
-  std::string planning_group;
-  ros::param::get("planning_group", planning_group);
+  std::string bool_topic;
+  ros::param::get("bool_topic", bool_topic);
   ros::param::get("gazebo_topic", gz_topic);
   ros::param::get("link_gazebo", link_gz);
   ros::param::get("link_rviz", link_rviz);
@@ -241,6 +242,7 @@ int main(int argc, char** argv)
   ros::Duration(30.0).sleep();  // wait a 1/2 min to initialize
 
   ros::Publisher pub = nh.advertise<gazebo_msgs::LinkState>(gz_topic, 1);
+  ros::Publisher pub_bool = nh.advertise<std_msgs::Bool>(bool_topic, 1);
 
   geometry_msgs::Pose central;
   central.position.x = 1.25;
@@ -291,6 +293,9 @@ int main(int argc, char** argv)
     random_state.twist.linear.y = 0.0;
     random_state.twist.linear.z = 0.0;
 
+    std_msgs::Bool msg;
+    msg.data = true;
+    pub_bool.publish(msg);
     pub.publish(random_state);
     sendTf(random_state.pose);
     ROS_INFO("Moving ball to (%f, %f, %f)", random_state.pose.position.x, random_state.pose.position.y,

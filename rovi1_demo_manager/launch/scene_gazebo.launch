@@ -48,7 +48,7 @@
     <param name="gazebo_topic" type="str" value="gazebo/set_link_state"/>
     <param name="link_gazebo" type="str" value="robot::marker_link"/>
     <param name="reference_gazebo" type="str" value="ground_plane::link"/>
-    <param name="planning_group" type="str" value="manipulator"/>
+    <param name="bool_topic" type="str" value="marker_trajectory"/>
     <param name="link_rviz" type="str" value="marker_link"/>
     <param name="reference_rviz" type="str" value="world"/>
 </launch>
