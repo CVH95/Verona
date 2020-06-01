@@ -274,10 +274,10 @@ bool findMarkerFromShape(cv::Mat& frame, Eigen::Affine3d& pose, double marker_si
   std::vector<cv::Point2f> corners = getCornersFromRect(marker_rect);
 
   cv::Mat box = cv::Mat::zeros(green.size(), CV_8UC3);
-  cv::rectangle(box, marker_rect, cv::Scalar(0, 255, 255), 3, 8, 0);
+  cv::rectangle(box, marker_rect, cv::Scalar(0, 255, 0), 4, 8, 0);
   for (int i = 0; i < corners.size(); i++)
   {
-    cv::circle(box, corners[i], 6, cv::Scalar(0, 0, 255), -1, 8, 0);
+    cv::circle(box, corners[i], 6, cv::Scalar(0, 255, 255), -1, 8, 0);
   }
 
   // Estimate pose

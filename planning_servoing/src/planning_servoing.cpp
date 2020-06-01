@@ -29,7 +29,11 @@ Planner::Planner(ros::NodeHandle node_handle) : nh_(node_handle)
   ROS_INFO(" * Planning group: %s", planning_group_.c_str());
 
   // Read moveit configuration file
-  setMoveitConfiguration();
+  if (!setMoveitConfiguration())
+  {
+    ROS_ERROR("Could not read moveit configuration!");
+    exit(1);
+  }
 
   // Start moveit
   mgp_.reset(new moveit::planning_interface::MoveGroupInterface(planning_group_));
@@ -38,6 +42,7 @@ Planner::Planner(ros::NodeHandle node_handle) : nh_(node_handle)
   // Set robot model
   robot_model_loader::RobotModelLoader robot_model_loader("robot_description");
   robot_model_ = robot_model_loader.getModel();
+  joint_model_group_ = mgp_->getCurrentState()->getJointModelGroup(planning_group_);
 
   // Configure planning
   mgp_->setPoseReferenceFrame(planning_frame_);
@@ -53,7 +58,7 @@ Planner::Planner(ros::NodeHandle node_handle) : nh_(node_handle)
 
   if (!moveRobot(home_position_))
   {
-    ROS_ERROR("Could not set robot in home position");
+    ROS_ERROR("Could not set robot in home position!");
     exit(1);
   }
 
@@ -71,7 +76,7 @@ Planner::Planner(ros::NodeHandle node_handle) : nh_(node_handle)
   catch (tf2::TransformException& ex)
   {
     ROS_ERROR("Could not get transform from end effector to camera!");
-    exit(0);
+    exit(1);
   }
   tf::transformMsgToEigen(ts.transform, ee_to_camera_);
 
@@ -81,6 +86,7 @@ Planner::Planner(ros::NodeHandle node_handle) : nh_(node_handle)
 
 Planner::~Planner()
 {
+  delete joint_model_group_;
   ROS_WARN("Planner node was killed!");
 }
 
@@ -88,15 +94,15 @@ bool Planner::readParams()
 {
   bool success = true;
   success = success && ros::param::get("planning_group", planning_group_);
-  success = success && ros::param::get("collision_topic", marker_motion_topic_);
+  success = success && ros::param::get("marker_motion_topic", marker_motion_topic_);
   success = success && ros::param::get("camera_frame", camera_frame_);
   success = success && ros::param::get("moveit_file", moveit_file_);
-  success = success && ros::param::get("camera_frame", service_id_);
-  success = success && ros::param::get("moveit_file", service_path_);
+  success = success && ros::param::get("service_id", service_id_);
+  success = success && ros::param::get("service_path", service_path_);
   return success;
 }
 
-void Planner::setMoveitConfiguration()
+bool Planner::setMoveitConfiguration()
 {
   YAML::Node map = YAML::LoadFile(moveit_file_.c_str());
   std::vector<double> pick, place, approach;
@@ -118,7 +124,13 @@ void Planner::setMoveitConfiguration()
   ROS_INFO(" * Home position: [%f, %f, %f, %f, %f, %f]", home_position_[0], home_position_[1], home_position_[2],
            home_position_[3], home_position_[4], home_position_[5]);
 
+  if (home_position_.empty())
+  {
+    return false;
+  }
+
   ROS_INFO("Moveit configuration parsed successfully!");
+  return true;
 }
 
 void Planner::initSubscribers()
@@ -149,15 +161,24 @@ bool Planner::moveRobot(std::vector<double> joint_positions)
 bool Planner::moveRobotToPose(geometry_msgs::Pose pose)
 {
   mgp_->setPoseTarget(pose, end_effector_frame_);
-  moveit::planning_interface::MoveGroupInterface::Plan plan;
-  bool success = (mgp_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-  ROS_DEBUG("Planning status: %s", success ? "SUCCESS" : "FAILED");
-  if (success)
-  {
-    success = (mgp_->execute(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-    ROS_DEBUG("Moved camera to new pose %s", success ? "SUCCESS" : "FAILED");
-  }
+  bool success = (mgp_->move() == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+  ROS_DEBUG("Moved camera to new pose %s", success ? "SUCCESS" : "FAILED");
   return success;
+}
+
+bool Planner::solveIK(geometry_msgs::Pose pose, std::vector<double>& joint_positions)
+{
+  robot_state::RobotStatePtr kinematic_state(new robot_state::RobotState(robot_model_));
+  kinematic_state->setToDefaultValues();
+
+  bool success = kinematic_state->setFromIK(joint_model_group_, pose, 10, 0.1);
+  if (!success)
+  {
+    return false;
+  }
+
+  kinematic_state->copyJointGroupPositions(joint_model_group_, joint_positions);
+  return true;
 }
 
 void Planner::markerCallback(const std_msgs::Bool& msg)
@@ -190,11 +211,12 @@ void Planner::serviceCallHandler()
 
   ROS_INFO("Received error %i with message: %s", code, mess.c_str());
 
-  geometry_msgs::TransformStamped current, marker;
+  geometry_msgs::TransformStamped current, marker, camera;
   marker.transform = basic_srv.response.marker_pose;
   try
   {
     current = tf_buffer_->lookupTransform(planning_frame_, end_effector_frame_, ros::Time(0));
+    // marker = tf_buffer_->lookupTransform(planning_frame_, "marker", ros::Time(0));
   }
   catch (tf2::TransformException& ex)
   {
@@ -202,20 +224,35 @@ void Planner::serviceCallHandler()
     return;
   }
 
-  Eigen::Affine3d current_h, marker_h, temp_h;
+  // Calculate transform of marker in world reference
+  Eigen::Affine3d current_h, marker_h;
   tf::transformMsgToEigen(current.transform, current_h);
   tf::transformMsgToEigen(marker.transform, marker_h);
+  Eigen::Affine3d world_to_marker = current_h * ee_to_camera_ * marker_h;  // T_0_3 = T_0_1 * T_1_2 * T_2_3
 
-  temp_h = ee_to_camera_ * marker_h;
-  current_h.translation().y() = temp_h.translation().y();
-  current_h.translation().z() = temp_h.translation().z();
+  // Update new robot pose
+  current_h.translation().y() = world_to_marker.translation().y();
+  current_h.translation().z() = world_to_marker.translation().z();
 
   geometry_msgs::Pose goal;
   tf::poseEigenToMsg(current_h, goal);
 
-  if (!moveRobotToPose(goal))
+  bool success;
+
+  // Manual IK solving
+  /*std::vector<double> new_joint_positions;
+  success = solveIK(goal, new_joint_positions);
+  if(!success)
   {
-    ROS_ERROR("Could not move robot to new pose!");
+    ROS_ERROR("Could not find solution to IK!");
+    return;
+  }
+  success = moveRobot(new_joint_positions);*/
+
+  success = moveRobotToPose(goal);
+  if (!success)
+  {
+    ROS_ERROR("Could not move robot to new state!");
   }
   ROS_INFO("New pose: %f, %f, %f", current_h.translation().x(), current_h.translation().y(),
            current_h.translation().z());

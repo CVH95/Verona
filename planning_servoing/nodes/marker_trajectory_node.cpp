@@ -298,9 +298,9 @@ int main(int argc, char** argv)
     pub_bool.publish(msg);
     pub.publish(random_state);
     sendTf(random_state.pose);
-    ROS_INFO("Moving ball to (%f, %f, %f)", random_state.pose.position.x, random_state.pose.position.y,
+    ROS_INFO("Moving marker to (%f, %f, %f)", random_state.pose.position.x, random_state.pose.position.y,
              random_state.pose.position.z);
-    ros::Duration(1.5).sleep();
+    ros::Duration(2.5).sleep();
 
     ros::spinOnce();
   }

@@ -1,0 +1,5 @@
+planning_group: manipulator
+marker_motion_topic: marker_trajectory
+camera_frame: asus_rgb_optical_frame
+service_id: rovi1_vision_server
+service_path: rovi1_vision_server/marker

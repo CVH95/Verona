@@ -66,6 +66,7 @@ private:
   std::unique_ptr<moveit::planning_interface::MoveGroupInterface> mgp_;
   std::unique_ptr<moveit::planning_interface::PlanningSceneInterface> planning_scene_interface_;
   robot_model::RobotModelPtr robot_model_;
+  const robot_state::JointModelGroup* joint_model_group_;
   std::string planning_frame_, end_effector_frame_, planner_id_;
   std::vector<double> home_position_;
   Eigen::Affine3d ee_to_camera_;
@@ -77,13 +78,14 @@ private:
   // Private methods
   bool moveRobot(std::vector<double> joint_positions);
   bool moveRobotToPose(geometry_msgs::Pose pose);
+  bool solveIK(geometry_msgs::Pose pose, std::vector<double>& joint_positions);
 
 public:
   Planner(ros::NodeHandle node_handle);
   ~Planner();
 
   bool readParams();
-  void setMoveitConfiguration();
+  bool setMoveitConfiguration();
   void initSubscribers();
   void initClient();
 };

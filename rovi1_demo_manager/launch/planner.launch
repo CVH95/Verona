@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="config_file" default="$(find rovi1_demo_manager)/config/planner_params.yaml"/>
+  <arg name="moveit_file" default="$(find rovi1_demo_manager)/config/moveit_config.yaml"/>
+
+  <rosparam command="load" file="$(arg config_file)"/>
+
+  <node name="planner_node" pkg="planning_servoing" type="planning_servoing_node" output="screen"></node>
+      <param name="moveit_file" type="str" value="$(arg moveit_file)"/>
+</launch>

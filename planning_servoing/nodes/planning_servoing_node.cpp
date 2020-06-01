@@ -11,13 +11,15 @@
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "planning_servoing_node");
+  ros::init(argc, argv, "planner_node");
   ros::NodeHandle nh;
+  ros::AsyncSpinner spinner(4);
+  spinner.start();
 
   planning_servoing::Planner planner(nh);
 
   planner.initSubscribers();
 
-  ros::spin();
+  ros::waitForShutdown();
   return 0;
 }
