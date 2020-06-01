@@ -1,38 +1,72 @@
 # ROVI1 Visual Servoing
 
-This repository contains the final project for ROVI 1 (SDU).
+This repository contains the final project for ROVI 1 (SDU). The project consisted on a visual servoing application based on color markers with random backgrounds. This is an example on how to do it using ROS tools such as _Gazebo_, _Rviz_ and _MoveIt!_. Original project uses RobWork and RobWorkStudio (see [this](https://github.com/CVH95/Verona/tree/robwork-devel) branch).
 
-### Downloading and compiling the RobWorkStudio Pluggin:
+![alt text](doc/demo.gif)
 
-```sh
-  $ mkdir ~/workspace
-  $ git clone https://github.com/CVEarp/ViServ_ROVI1/
-  $ mv ViServ_ROVI1 RoVi1-Final-Project
-  $ cd RoVi1-Final-Project/RWStudio_plug-ins/SamplePluginPA10/
-  $ mkdir build
-  $ cd build/
-  $ cmake ../
-  $ make
-```
+## Instal instructions
 
-### Compiling the tests for both feature extractors:
+Install catkin tools (python):
 
 ```sh
-  $ cd ~/workspace/RoVi1-Final-Project/feature_extraction/marker2/src
-  $ cmake .
-  $ make
-  $ cd ~/workspace/RoVi1-Final-Project/feature_extraction/marker3/src
-  $ cmake .
-  $ make
+sudo apt install python-catkin-tools
 ```
 
-The RWStudio pluggin only uses the color marker for real feature-extraction visual servoing.
+Then clone and install dependencies:
 
-### Visual Servoing Block Diagram
+```sh
+cd ~
+mkdir -p rovi1_ws/src && cd rovi1_ws/src
+git clone <url>
 
-![alt text](diagram.png)
+# Install dependencies via rosinstall and rosdeo
+wstool update
+cd ..
+rosdep update
+rosdep install -i --from-paths src/ -y -r
 
-### Documentation
+# Build
+catkin init
+catkin build
+```
 
-- [Robwork](http://www.robwork.dk/apidoc/nightly/rw/) installation and documentation.
-- [OpenCV](https://docs.opencv.org/3.4.0/d9/df8/tutorial_root.html) installation and documentation.
+## Usage instructions
+
+On separate terminals:
+
+```sh
+# Launch simulated scene
+roslaunch rovi1_demo_manager scene_gazebo.launch
+
+# Launch server interface
+roslaunch rovi1_demo_manager vision_server.launch
+
+# Launch client interface
+roslaunch rovi1_demo_manager planner.launch
+```
+
+- - -
+
+**NOTE:** There is a predefined RVIZ configuration in rovi1_demo_manager/config/default.rviz, which has default windows to show result-detection images, as well as relevant frames.
+
+- - -
+
+## System Overview
+
+![alt text](doc/rovi1_system.png)
+
+## Packages and classes
+
+- `gazebo_models`: Configuration and mesh files to implement the model of the wall with the cathedral window background.
+- `planning_servoing` package.
+  - Class list:
+    - `Planner`: Planning class interfacing _Moveit_ to create a visual servoing loop.
+  - Node list:
+    - `planning_servoing_node`: Main node running `Planner` class.
+    - `marker_trajectory_node`: Node to move the marker the scene (triangle and rectangle trajectories).
+- `perception_servoing`: Shared library with detection methods.
+- `rovi1_demo_manager` package. Main running interface of the application. Configuration files (in `YAML` format), as well as `launch` files for all the several nodes of the system are in this packages.
+- `vision_interface` stack. Interface implementing a server architecture for the vision part.
+  - `vision_lib_msgs` package: Definition of the request and response messages of the service.
+  - `vision_server_ros` package: Class implementing the server. It subscribes to image stream only when the service is called, and uses `perception_servoing` lib to detect the marker.
+- `workcell_scene_description` package: URDF files of the components and description of the workcell.
