@@ -10,9 +10,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>pointgrey_camera_description</depend>
-  <depend>hector_models_description</depend>
-  <depend>pa10_description</depend>
+  <depend>ur_description</depend>
 
   <export>
   </export>
